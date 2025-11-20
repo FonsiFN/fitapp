@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precios - FitSaaS | Planes de Entrenamiento y Nutrición</title>
+    <meta name="description" content="Elige el plan que mejor se adapte a tus objetivos fitness. Desde básico hasta premium con coaching personalizado.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black-primary: #000000;
+            --black-secondary: #0f0f0f;
+            --black-tertiary: #1a1a1a;
+            --orange-primary: #FF6A00;
+            --orange-secondary: #FF944D;
+            --orange-gradient: linear-gradient(135deg, #FF6A00 0%, #FF944D 100%);
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-medium: #e9ecef;
+            --gray-dark: #495057;
+            --gray-darker: #343a40;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-xxl: 6rem;
+            
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 20px;
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+            
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--black-primary);
+            line-height: 1.7;
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: var(--space-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: var(--black-primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--orange-primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: var(--space-lg);
+        }
+        
+        nav a {
+            color: var(--black-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+        
+        nav a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .cta-button {
+            background: var(--orange-gradient);
+            color: var(--white);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: var(--space-xxl) 0;
+            background: var(--gray-light);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--orange-primary);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--orange-gradient);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--gray-medium);
+        }
+        
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--orange-primary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .pricing-period {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+        
+        .pricing-features {
+            flex-grow: 1;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .pricing-features li:before {
+            content: '✓';
+            color: var(--orange-primary);
+            font-weight: bold;
+            margin-right: var(--space-sm);
+        }
+        
+        .pricing-features li.disabled {
+            color: var(--gray-dark);
+            opacity: 0.5;
+        }
+        
+        .pricing-features li.disabled:before {
+            content: '✗';
+            color: var(--gray-dark);
+        }
+        
+        .pricing-cta {
+            margin-top: auto;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: var(--space-xxl) 0;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--orange-primary);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--black-primary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--orange-gradient);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+        
+        .cta-section .cta-button {
+            background: var(--white);
+            color: var(--orange-primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--black-secondary);
+            color: var(--gray-medium);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Fit<span>SaaS</span></a>
+            <nav>
+                <ul>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="pricing.html">Precios</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="onboarding.html" class="cta-button">Comenzar Ahora</a>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Planes y Precios</h1>
+            <p>Elige el nivel de personalización y soporte que necesitas para alcanzar tus metas fitness</p>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <div class="pricing-grid">
+                <!-- Plan Básico -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Básico</h3>
+                        <div class="pricing-price">€19<span class="pricing-period">/mes</span></div>
+                        <p>Perfecto para comenzar tu transformación</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Rutinas de entrenamiento personalizadas</li>
+                            <li>Plan básico de alimentación</li>
+                            <li>Seguimiento de progreso básico</li>
+                            <li>Acceso a la comunidad</li>
+                            <li>Soporte por email</li>
+                            <li class="disabled">Asesoría en suplementación</li>
+                            <li class="disabled">Revisiones mensuales</li>
+                            <li class="disabled">Consultoría 1:1</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="onboarding.html?plan=basic" class="cta-button">Comenzar</a>
+                    </div>
+                </div>
+                
+                <!-- Plan Pro -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MÁS POPULAR</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Pro</h3>
+                        <div class="pricing-price">€39<span class="pricing-period">/mes</span></div>
+                        <p>Recomendado para resultados óptimos</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Todo lo incluido en Básico</li>
+                            <li>Plan nutricional detallado</li>
+                            <li>Asesoría en suplementación básica</li>
+                            <li>Revisiones mensuales del plan</li>
+                            <li>Soporte prioritario</li>
+                            <li>Ajustes semiautomáticos</li>
+                            <li class="disabled">Consultoría 1:1 mensual</li>
+                            <li class="disabled">Ajustes en tiempo real</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="onboarding.html?plan=pro" class="cta-button">Comenzar</a>
+                    </div>
+                </div>
+                
+                <!-- Plan Premium -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Premium</h3>
+                        <div class="pricing-price">€69<span class="pricing-period">/mes</span></div>
+                        <p>Máxima personalización y resultados</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Todo lo incluido en Pro</li>
+                            <li>Planificación por objetivos específicos</li>
+                            <li>Asesoría en suplementación avanzada</li>
+                            <li>Revisiones quincenales</li>
+                            <li>Consultoría 1:1 mensual</li>
+                            <li>Ajustes automáticos en tiempo real</li>
+                            <li>Acceso anticipado a nuevas funciones</li>
+                            <li>Análisis de composición corporal avanzado</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="onboarding.html?plan=premium" class="cta-button">Comenzar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--space-md);">Preguntas Frecuentes</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-xl); color: var(--gray-dark);">
+                Resolvemos tus dudas sobre nuestros planes y servicios
+            </p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Puedo cambiar de plan en cualquier momento?</h3>
+                    <p>Sí, puedes cambiar entre planes en cualquier momento. La diferencia de precio se prorrateará en tu próxima factura.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Hay compromiso de permanencia?</h3>
+                    <p>No, todos nuestros planes son mensuales sin compromiso de permanencia. Puedes cancelar en cualquier momento.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Qué métodos de pago aceptan?</h3>
+                    <p>Aceptamos tarjetas de crédito/débito (Visa, MasterCard, American Express) y PayPal.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Ofrecen reembolsos?</h3>
+                    <p>Ofrecemos garantía de satisfacción de 14 días. Si no estás contento con el servicio, te reembolsamos el primer mes.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Los planes incluyen dieta y entrenamiento?</h3>
+                    <p>Sí, todos los planes incluyen tanto el componente de entrenamiento como el de nutrición personalizados.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Puedo pausar mi suscripción?</h3>
+                    <p>Sí, puedes pausar tu suscripción por un máximo de 2 meses si necesitas un descanso por viaje o lesión.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿No estás seguro de qué plan elegir?</h2>
+            <p style="margin-bottom: var(--space-lg); color: rgba(255,255,255,0.9);">Completa nuestra evaluación gratuita y te recomendaremos el plan ideal para tus objetivos</p>
+            <a href="onboarding.html" class="cta-button">Comenzar Evaluación Gratuita</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FitSaaS</h3>
+                    <p>Transformando cuerpos mediante ciencia y tecnología avanzada.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="pricing.html">Precios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacidad</a></li>
+                        <li><a href="terms.html">Términos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
+                        <li><a href="contact.html">Formulario</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FitSaaS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
