@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - FitSaaS | Ciencia y Tecnología en Fitness</title>
+    <meta name="description" content="Conoce nuestra misión, visión y el equipo detrás de FitSaaS. Combinamos ciencia del ejercicio con tecnología avanzada.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black-primary: #000000;
+            --black-secondary: #0f0f0f;
+            --black-tertiary: #1a1a1a;
+            --orange-primary: #FF6A00;
+            --orange-secondary: #FF944D;
+            --orange-gradient: linear-gradient(135deg, #FF6A00 0%, #FF944D 100%);
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-medium: #e9ecef;
+            --gray-dark: #495057;
+            --gray-darker: #343a40;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-xxl: 6rem;
+            
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 20px;
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+            
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--black-primary);
+            line-height: 1.7;
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: var(--space-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: var(--black-primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--orange-primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: var(--space-lg);
+        }
+        
+        nav a {
+            color: var(--black-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+        
+        nav a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .cta-button {
+            background: var(--orange-gradient);
+            color: var(--white);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: var(--space-xxl) 0;
+        }
+        
+        .mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+        
+        .mission-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .mission-image {
+            background: var(--gray-light);
+            height: 400px;
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-dark);
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: var(--space-lg);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--orange-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        /* Team Section */
+        .team {
+            padding: var(--space-xxl) 0;
+            background: var(--gray-light);
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .team-member {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--gray-medium);
+            margin: 0 auto var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-dark);
+        }
+        
+        .member-role {
+            color: var(--orange-primary);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+        }
+
+        /* Story Section */
+        .story {
+            padding: var(--space-xxl) 0;
+        }
+        
+        .story-timeline {
+            max-width: 800px;
+            margin: var(--space-xl) auto 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+        
+        .timeline-year {
+            flex: 0 0 100px;
+            font-weight: 700;
+            color: var(--orange-primary);
+        }
+        
+        .timeline-content {
+            flex: 1;
+            padding-left: var(--space-lg);
+            border-left: 3px solid var(--orange-primary);
+        }
+        
+        .timeline-item:before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--orange-primary);
+            border-radius: 50%;
+            position: absolute;
+            left: 96px;
+            top: 5px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--orange-gradient);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+        
+        .cta-section .cta-button {
+            background: var(--white);
+            color: var(--orange-primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--black-secondary);
+            color: var(--gray-medium);
+        }
+
+        @media (max-width: 768px) {
+            .mission-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+            }
+            
+            .timeline-content {
+                padding-left: 0;
+                border-left: none;
+                padding-top: var(--space-sm);
+            }
+            
+            .timeline-item:before {
+                display: none;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Fit<span>SaaS</span></a>
+            <nav>
+                <ul>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="pricing.html">Precios</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="onboarding.html" class="cta-button">Comenzar Ahora</a>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Sobre FitSaaS</h1>
+            <p>Combinando ciencia del ejercicio con tecnología avanzada para transformar vidas</p>
+        </div>
+    </section>
+
+    <section class="mission">
+        <div class="container">
+            <div class="mission-grid">
+                <div class="mission-content">
+                    <h2>Nuestra Misión</h2>
+                    <p>Democratizar el acceso a entrenamiento y nutrición de calidad mediante tecnología inteligente que se adapta a cada individuo. Creemos que todos merecen un plan fitness personalizado, no genérico.</p>
+                    <p>Nuestro enfoque combina algoritmos de machine learning con principios científicos probados en fisiología del ejercicio y nutrición deportiva.</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <div class="value-icon">🔬</div>
+                            <h3>Ciencia</h3>
+                            <p>Basamos todo en evidencia científica y datos verificados</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">🎯</div>
+                            <h3>Personalización</h3>
+                            <p>Cada plan es único, adaptado a objetivos y circunstancias</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="value-icon">📈</div>
+                            <h3>Resultados</h3>
+                            <p>Enfoque en métricas medibles y progreso tangible</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mission-image">
+                    Imagen de Misión
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--space-md);">Nuestra Historia</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto var(--space-xl); color: var(--gray-dark);">
+                De la frustración con los planes genéricos a la creación de la plataforma de fitness personalizado más avanzada
+            </p>
+            
+            <div class="story-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>El Problema</h3>
+                        <p>Nuestro fundador, después de años probando apps de fitness genéricas, se dio cuenta de que ninguna se adaptaba realmente a su progreso, preferencias y circunstancias cambiantes.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3>Investigación y Desarrollo</h3>
+                        <p>Formamos un equipo multidisciplinar de entrenadores, nutricionistas e ingenieros para desarrollar los algoritmos que formarían el núcleo de FitSaaS.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3>Primera Versión</h3>
+                        <p>Lanzamos nuestra versión beta con 100 usuarios que nos ayudaron a refinar el producto y validar nuestra metodología.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Lanzamiento Oficial</h3>
+                        <p>Después de iterar basándonos en el feedback de nuestros usuarios beta, lanzamos oficialmente FitSaaS al público.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--space-md);">Nuestro Equipo</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-xl); color: var(--gray-dark);">
+                Expertos en fitness, nutrición y tecnología trabajando juntos para tu transformación
+            </p>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">Foto</div>
+                    <h3>Alex Rodríguez</h3>
+                    <div class="member-role">CEO & Fundador</div>
+                    <p>Más de 10 años de experiencia en fitness y emprendimiento tecnológico.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">Foto</div>
+                    <h3>Dr. María López</h3>
+                    <div class="member-role">Directora de Nutrición</div>
+                    <p>Doctora en Nutrición Deportiva y dietista-nutricionista colegiada.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">Foto</div>
+                    <h3>Carlos Méndez</h3>
+                    <div class="member-role">Head Coach</div>
+                    <p>Entrenador personal certificado con especialización en fuerza y acondicionamiento.</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">Foto</div>
+                    <h3>Ana Torres</h3>
+                    <div class="member-role">Lead Developer</div>
+                    <p>Ingeniera de software especializada en machine learning y aplicaciones fitness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Listo para comenzar tu transformación?</h2>
+            <p style="margin-bottom: var(--space-lg); color: rgba(255,255,255,0.9);">Únete a miles de usuarios que ya están alcanzando sus objetivos con nuestro enfoque científico</p>
+            <a href="onboarding.html" class="cta-button">Comenzar Evaluación Gratuita</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FitSaaS</h3>
+                    <p>Transformando cuerpos mediante ciencia y tecnología avanzada.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="pricing.html">Precios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacidad</a></li>
+                        <li><a href="terms.html">Términos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
+                        <li><a href="contact.html">Formulario</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FitSaaS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
