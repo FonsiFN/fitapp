@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - FitSaaS | Fitness, Nutrición y Ciencia</title>
+    <meta name="description" content="Artículos sobre entrenamiento, nutrición, suplementación y ciencia del ejercicio. Aprende a optimizar tus resultados.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black-primary: #000000;
+            --black-secondary: #0f0f0f;
+            --black-tertiary: #1a1a1a;
+            --orange-primary: #FF6A00;
+            --orange-secondary: #FF944D;
+            --orange-gradient: linear-gradient(135deg, #FF6A00 0%, #FF944D 100%);
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-medium: #e9ecef;
+            --gray-dark: #495057;
+            --gray-darker: #343a40;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-xxl: 6rem;
+            
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 20px;
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+            
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--black-primary);
+            line-height: 1.7;
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: var(--space-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: var(--black-primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--orange-primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: var(--space-lg);
+        }
+        
+        nav a {
+            color: var(--black-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+        
+        nav a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .cta-button {
+            background: var(--orange-gradient);
+            color: var(--white);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Blog Section */
+        .blog {
+            padding: var(--space-xxl) 0;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--space-xl);
+        }
+        
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .post-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .post-image {
+            height: 200px;
+            background: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-dark);
+        }
+        
+        .post-content {
+            padding: var(--space-lg);
+        }
+        
+        .post-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+            font-size: 0.9rem;
+            color: var(--gray-dark);
+        }
+        
+        .post-category {
+            background: var(--orange-primary);
+            color: var(--white);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--border-radius-sm);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: var(--space-sm);
+        }
+        
+        .post-title {
+            font-size: 1.3rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .post-excerpt {
+            color: var(--gray-darker);
+            margin-bottom: var(--space-md);
+        }
+        
+        .read-more {
+            color: var(--orange-primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .read-more:after {
+            content: '→';
+            margin-left: var(--space-xs);
+            transition: transform var(--transition-fast);
+        }
+        
+        .read-more:hover:after {
+            transform: translateX(3px);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: var(--gray-light);
+            padding: var(--space-lg);
+            border-radius: var(--border-radius-lg);
+            height: fit-content;
+        }
+        
+        .sidebar-section {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .sidebar-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .sidebar-section h3 {
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--orange-primary);
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .categories-list a {
+            color: var(--gray-darker);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .categories-list a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .categories-list .count {
+            background: var(--gray-medium);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+        }
+        
+        .popular-posts {
+            list-style: none;
+        }
+        
+        .popular-post {
+            display: flex;
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--gray-medium);
+        }
+        
+        .popular-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .popular-post-image {
+            width: 60px;
+            height: 60px;
+            background: var(--gray-medium);
+            border-radius: var(--border-radius);
+            margin-right: var(--space-sm);
+            flex-shrink: 0;
+        }
+        
+        .popular-post-content h4 {
+            font-size: 0.9rem;
+            margin-bottom: var(--space-xs);
+        }
+        
+        .popular-post-date {
+            font-size: 0.8rem;
+            color: var(--gray-dark);
+        }
+
+        /* Newsletter */
+        .newsletter-sidebar {
+            background: var(--orange-gradient);
+            color: var(--white);
+            padding: var(--space-lg);
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+        
+        .newsletter-sidebar h3 {
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .newsletter-sidebar p {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: var(--space-md);
+            font-size: 0.9rem;
+        }
+        
+        .newsletter-form input {
+            width: 100%;
+            padding: var(--space-sm);
+            border: none;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--space-sm);
+            font-family: var(--font-body);
+        }
+        
+        .newsletter-form button {
+            width: 100%;
+            background: var(--white);
+            color: var(--orange-primary);
+            border: none;
+            padding: var(--space-sm);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--space-xl);
+            gap: var(--space-sm);
+        }
+        
+        .pagination a {
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            color: var(--black-primary);
+            transition: all var(--transition-fast);
+        }
+        
+        .pagination a:hover {
+            background: var(--orange-primary);
+            color: var(--white);
+            border-color: var(--orange-primary);
+        }
+        
+        .pagination a.active {
+            background: var(--orange-primary);
+            color: var(--white);
+            border-color: var(--orange-primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--black-secondary);
+            color: var(--gray-medium);
+        }
+
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Fit<span>SaaS</span></a>
+            <nav>
+                <ul>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="pricing.html">Precios</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="onboarding.html" class="cta-button">Comenzar Ahora</a>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Blog de FitSaaS</h1>
+            <p>Artículos sobre fitness, nutrición y ciencia del ejercicio para optimizar tus resultados</p>
+        </div>
+    </section>
+
+    <section class="blog">
+        <div class="container">
+            <div class="blog-grid">
+                <div class="posts-container">
+                    <div class="posts-grid">
+                        <!-- Post 1 -->
+                        <article class="post-card">
+                            <div class="post-image">
+                                Imagen del Post
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Entrenamiento</span>
+                                    <span>15 Marzo, 2023</span>
+                                </div>
+                                <h2 class="post-title">Principios Científicos para Maximizar la Hipertrofia</h2>
+                                <p class="post-excerpt">Descubre los mecanismos fisiológicos detrás del crecimiento muscular y cómo aplicarlos en tu rutina de entrenamiento.</p>
+                                <a href="blog/post-1.html" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Post 2 -->
+                        <article class="post-card">
+                            <div class="post-image">
+                                Imagen del Post
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Nutrición</span>
+                                    <span>10 Marzo, 2023</span>
+                                </div>
+                                <h2 class="post-title">Timing de Nutrientes: ¿Mito o Realidad Científica?</h2>
+                                <p class="post-excerpt">Analizamos la evidencia científica sobre el momento óptimo para consumir proteínas y carbohidratos alrededor del entrenamiento.</p>
+                                <a href="blog/post-2.html" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Post 3 -->
+                        <article class="post-card">
+                            <div class="post-image">
+                                Imagen del Post
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Suplementación</span>
+                                    <span>5 Marzo, 2023</span>
+                                </div>
+                                <h2 class="post-title">Los 5 Suplementos con Evidencia Científica Sólida</h2>
+                                <p class="post-excerpt">Revisión de los suplementos que realmente funcionan según estudios científicos rigurosos, y cómo incorporarlos correctamente.</p>
+                                <a href="blog/post-3.html" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Post 4 -->
+                        <article class="post-card">
+                            <div class="post-image">
+                                Imagen del Post
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Recuperación</span>
+                                    <span>28 Febrero, 2023</span>
+                                </div>
+                                <h2 class="post-title">Sueño y Rendimiento Deportivo: La Conexión Crítica</h2>
+                                <p class="post-excerpt">Cómo la calidad y cantidad de sueño afectan tu recuperación, crecimiento muscular y rendimiento en el entrenamiento.</p>
+                                <a href="blog/post-4.html" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Post 5 -->
+                        <article class="post-card">
+                            <div class="post-image">
+                                Imagen del Post
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Metodología</span>
+                                    <span>20 Febrero, 2023</span>
+                                </div>
+                                <h2 class="post-title">Periodización: Por Qué Tu Rutina Debe Evolucionar</h2>
+                                <p class="post-excerpt">Entiende los principios de la periodización del entrenamiento y cómo aplicarlos para evitar estancamientos y lesiones.</p>
+                                <a href="blog/post-5.html" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+                        
+                        <!-- Post 6 -->
+                        <article class="post-card">
+                            <div class="post-image">
+                                Imagen del Post
+                            </div>
+                            <div class="post-content">
+                                <div class="post-meta">
+                                    <span class="post-category">Nutrición</span>
+                                    <span>15 Febrero, 2023</span>
+                                </div>
+                                <h2 class="post-title">Dietas Flexibles vs. Estructuradas: ¿Cuál Elegir?</h2>
+                                <p class="post-excerpt">Comparativa de diferentes enfoques nutricionales y cómo determinar cuál se adapta mejor a tu estilo de vida y objetivos.</p>
+                                <a href="blog/post-6.html" class="read-more">Leer más</a>
+                            </div>
+                        </article>
+                    </div>
+                    
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">→</a>
+                    </div>
+                </div>
+                
+                <div class="sidebar">
+                    <!-- Newsletter -->
+                    <div class="newsletter-sidebar">
+                        <h3>Newsletter Fitness</h3>
+                        <p>Recibe artículos exclusivos y tips científicos directamente en tu email</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Tu email" required>
+                            <button type="submit">Suscribirme</button>
+                        </form>
+                    </div>
+                    
+                    <!-- Categories -->
+                    <div class="sidebar-section">
+                        <h3>Categorías</h3>
+                        <ul class="categories-list">
+                            <li>
+                                <a href="#">Entrenamiento <span class="count">12</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Nutrición <span class="count">8</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Suplementación <span class="count">5</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Recuperación <span class="count">4</span></a>
+                            </li>
+                            <li>
+                                <a href="#">Metodología <span class="count">7</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Popular Posts -->
+                    <div class="sidebar-section">
+                        <h3>Artículos Populares</h3>
+                        <ul class="popular-posts">
+                            <li class="popular-post">
+                                <div class="popular-post-image"></div>
+                                <div class="popular-post-content">
+                                    <h4>Principios Científicos para Maximizar la Hipertrofia</h4>
+                                    <div class="popular-post-date">15 Mar, 2023</div>
+                                </div>
+                            </li>
+                            <li class="popular-post">
+                                <div class="popular-post-image"></div>
+                                <div class="popular-post-content">
+                                    <h4>Los 5 Suplementos con Evidencia Científica Sólida</h4>
+                                    <div class="popular-post-date">5 Mar, 2023</div>
+                                </div>
+                            </li>
+                            <li class="popular-post">
+                                <div class="popular-post-image"></div>
+                                <div class="popular-post-content">
+                                    <h4>Sueño y Rendimiento Deportivo: La Conexión Crítica</h4>
+                                    <div class="popular-post-date">28 Feb, 2023</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FitSaaS</h3>
+                    <p>Transformando cuerpos mediante ciencia y tecnología avanzada.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="pricing.html">Precios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacidad</a></li>
+                        <li><a href="terms.html">Términos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
+                        <li><a href="contact.html">Formulario</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FitSaaS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            // Here you would typically send to your email service
+            alert('¡Gracias por suscribirte! Te hemos enviado un email de confirmación.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
