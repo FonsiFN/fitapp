@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - FitSaaS | Soporte y Consultas</title>
+    <meta name="description" content="¿Tienes preguntas? Contáctanos. Nuestro equipo está aquí para ayudarte en tu journey fitness.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black-primary: #000000;
+            --black-secondary: #0f0f0f;
+            --black-tertiary: #1a1a1a;
+            --orange-primary: #FF6A00;
+            --orange-secondary: #FF944D;
+            --orange-gradient: linear-gradient(135deg, #FF6A00 0%, #FF944D 100%);
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-medium: #e9ecef;
+            --gray-dark: #495057;
+            --gray-darker: #343a40;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-xxl: 6rem;
+            
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 20px;
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+            
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--black-primary);
+            line-height: 1.7;
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: var(--space-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: var(--black-primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--orange-primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: var(--space-lg);
+        }
+        
+        nav a {
+            color: var(--black-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+        
+        nav a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .cta-button {
+            background: var(--orange-gradient);
+            color: var(--white);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--gray-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: var(--space-xxl) 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+        }
+        
+        .contact-info {
+            background: var(--gray-light);
+            padding: var(--space-xl);
+            border-radius: var(--border-radius-lg);
+        }
+        
+        .contact-methods {
+            margin-top: var(--space-lg);
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--orange-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--space-md);
+            color: var(--white);
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-sm);
+            font-weight: 500;
+            color: var(--black-primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--orange-primary);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn-submit {
+            background: var(--orange-gradient);
+            color: var(--white);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            width: 100%;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* FAQ Section */
+        .faq-contact {
+            padding: var(--space-xxl) 0;
+            background: var(--gray-light);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--black-primary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--black-secondary);
+            color: var(--gray-medium);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Fit<span>SaaS</span></a>
+            <nav>
+                <ul>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="pricing.html">Precios</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="onboarding.html" class="cta-button">Comenzar Ahora</a>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Contacto</h1>
+            <p>¿Tienes preguntas? Estamos aquí para ayudarte en tu journey fitness</p>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Hablemos</h2>
+                    <p>Nuestro equipo está listo para responder tus preguntas sobre nuestros servicios, planes o cualquier duda técnica que puedas tener.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">📧</div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>hola@fitsaas.com</p>
+                                <p style="color: var(--gray-dark); font-size: 0.9rem;">Respuesta en 24 horas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">📱</div>
+                            <div>
+                                <h3>Teléfono</h3>
+                                <p>+34 123 456 789</p>
+                                <p style="color: var(--gray-dark); font-size: 0.9rem;">Lunes a Viernes, 9:00-18:00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">💬</div>
+                            <div>
+                                <h3>Chat en Vivo</h3>
+                                <p>Disponible en tu dashboard</p>
+                                <p style="color: var(--gray-dark); font-size: 0.9rem;">Para clientes activos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2>Envíanos un mensaje</h2>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nombre completo</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <select id="subject" name="subject" class="form-control" required>
+                                <option value="">Selecciona un asunto</option>
+                                <option value="general">Consulta general</option>
+                                <option value="technical">Problema técnico</option>
+                                <option value="billing">Facturación y pagos</option>
+                                <option value="feedback">Feedback y sugerencias</option>
+                                <option value="partnership">Colaboraciones</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-contact">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--space-md);">Preguntas Frecuentes</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-xl); color: var(--gray-dark);">
+                Respuestas rápidas a las consultas más comunes
+            </p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Cómo funciona el proceso de onboarding?</h3>
+                    <p>Completas nuestro cuestionario detallado, nuestro algoritmo crea tu plan personalizado, y comienzas a seguir las rutinas y planes nutricionales desde tu dashboard.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Puedo cancelar mi suscripción en cualquier momento?</h3>
+                    <p>Sí, todas nuestras suscripciones son mensuales sin compromiso de permanencia. Puedes cancelar cuando quieras desde tu panel de usuario.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Los planes incluyen soporte personalizado?</h3>
+                    <p>Depende del plan. Los planes Pro y Premium incluyen soporte prioritario y consultas con nuestros expertos. El plan Básico incluye soporte por email.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Qué pasa si tengo una lesión o condición médica?</h3>
+                    <p>Nuestro sistema puede adaptarse a la mayoría de condiciones. Es importante que nos informes durante el onboarding para crear un plan seguro para ti.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FitSaaS</h3>
+                    <p>Transformando cuerpos mediante ciencia y tecnología avanzada.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="pricing.html">Precios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacidad</a></li>
+                        <li><a href="terms.html">Términos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
+                        <li><a href="contact.html">Formulario</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FitSaaS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your backend
+            alert('¡Mensaje enviado! Te responderemos en breve.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
