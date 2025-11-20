@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitSaaS - Entrenamiento y Nutrición Personalizada Basada en Ciencia</title>
+    <meta name="description" content="Plataforma SaaS de fitness que combina algoritmos de IA con expertos humanos para crear planes de entrenamiento y nutrición completamente personalizados.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Paleta de colores */
+            --black-primary: #000000;
+            --black-secondary: #0f0f0f;
+            --black-tertiary: #1a1a1a;
+            --orange-primary: #FF6A00;
+            --orange-secondary: #FF944D;
+            --orange-gradient: linear-gradient(135deg, #FF6A00 0%, #FF944D 100%);
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-medium: #e9ecef;
+            --gray-dark: #495057;
+            --gray-darker: #343a40;
+            
+            /* Tipografías */
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Espaciado */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-xxl: 6rem;
+            
+            /* Bordes */
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 20px;
+            
+            /* Sombras */
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+            
+            /* Transiciones */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--black-primary);
+            line-height: 1.7;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+        }
+        
+        p {
+            margin-bottom: var(--space-md);
+            color: var(--gray-darker);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-sm { margin-bottom: var(--space-sm); }
+        .mb-md { margin-bottom: var(--space-md); }
+        .mb-lg { margin-bottom: var(--space-lg); }
+        .mb-xl { margin-bottom: var(--space-xl); }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: var(--space-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-normal);
+        }
+        
+        header.scrolled {
+            padding: var(--space-xs) 0;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: var(--black-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--orange-primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: var(--space-lg);
+        }
+        
+        nav a {
+            color: var(--black-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+        
+        nav a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--orange-gradient);
+            transition: width var(--transition-normal);
+        }
+        
+        nav a:hover {
+            color: var(--orange-primary);
+        }
+        
+        nav a:hover:after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: var(--orange-gradient);
+            color: var(--white);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--black-primary);
+            border: 2px solid var(--black-primary);
+        }
+        
+        .cta-button.secondary:hover {
+            background: var(--black-primary);
+            color: var(--white);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xxl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,106,0,0.1) 0%, rgba(0,0,0,0) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text h1 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+        
+        .hero-text p {
+            color: var(--gray-medium);
+            font-size: 1.2rem;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: var(--space-md);
+        }
+        
+        .hero-image {
+            position: relative;
+            border-radius: var(--border-radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--orange-primary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--gray-medium);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: var(--space-xxl) 0;
+            background-color: var(--gray-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+            color: var(--gray-dark);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-lg);
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--orange-gradient);
+            transition: width var(--transition-normal);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-card:hover:before {
+            width: 8px;
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-md);
+            background: var(--orange-gradient);
+            color: var(--white);
+            font-size: 1.75rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: var(--space-xxl) 0;
+            background-color: var(--white);
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            position: relative;
+        }
+        
+        .steps:before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gray-medium);
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            padding: 0 var(--space-sm);
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--orange-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--orange-primary);
+        }
+        
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: var(--space-xxl) 0;
+            background-color: var(--gray-light);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .pricing-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid var(--orange-primary);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--gray-medium);
+        }
+        
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--orange-primary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .pricing-period {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+        
+        .pricing-features {
+            flex-grow: 1;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .pricing-features li:before {
+            content: '✓';
+            color: var(--orange-primary);
+            font-weight: bold;
+            margin-right: var(--space-sm);
+        }
+        
+        .pricing-cta {
+            margin-top: auto;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: var(--space-xxl) 0;
+            background: var(--orange-gradient);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+        
+        .cta-section p {
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            margin: 0 auto var(--space-lg);
+        }
+        
+        .cta-section .cta-button {
+            background: var(--white);
+            color: var(--orange-primary);
+        }
+        
+        .cta-section .cta-button:hover {
+            background: var(--black-primary);
+            color: var(--white);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xxl) 0 var(--space-lg);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p {
+            color: var(--gray-medium);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-section a {
+            color: var(--gray-medium);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-section a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--black-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        
+        .social-link:hover {
+            background: var(--orange-primary);
+            transform: translateY(-2px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--black-secondary);
+            color: var(--gray-medium);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2.25rem;
+            }
+            
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-lg);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin: var(--space-md) 0;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: var(--space-sm);
+            }
+            
+            nav li {
+                margin: 0;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .steps {
+                flex-direction: column;
+                gap: var(--space-lg);
+            }
+            
+            .steps:before {
+                display: none;
+            }
+            
+            .step {
+                display: flex;
+                align-items: flex-start;
+                text-align: left;
+                padding: 0;
+            }
+            
+            .step-number {
+                margin: 0 var(--space-md) 0 0;
+                min-width: 60px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
+            }
+            
+            .step-content {
+                flex: 1;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.75rem;
+            }
+            
+            .features-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">Fit<span>SaaS</span></a>
+            <nav>
+                <ul>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="pricing.html">Precios</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="onboarding.html" class="cta-button">Comenzar Ahora</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Transforma tu cuerpo con ciencia, no con suposiciones</h1>
+                <p>Algoritmos de IA avanzada combinados con supervisión de expertos en fitness para crear planes 100% personalizados que se adaptan a tu progreso en tiempo real.</p>
+                <div class="hero-buttons">
+                    <a href="onboarding.html" class="cta-button">Comenzar Evaluación Gratuita</a>
+                    <a href="#how-it-works" class="cta-button secondary">Cómo Funciona</a>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">97%</span>
+                        <span class="stat-label">Satisfacción Clientes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">12.5kg</span>
+                        <span class="stat-label">Pérdida de Grasa Promedio</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.2kg</span>
+                        <span class="stat-label">Ganancia Muscular Promedio</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Placeholder for dashboard image -->
+                <div style="background: var(--black-tertiary); height: 400px; display: flex; align-items: center; justify-content: center; color: var(--gray-medium);">
+                    Dashboard Interactivo Preview
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Una solución completa para tus objetivos fitness</h2>
+            <p class="section-subtitle">Combinamos tecnología avanzada con principios científicos probados para ofrecerte la herramienta más efectiva para transformar tu cuerpo.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Entrenamiento Hyper-Personalizado</h3>
+                    <p>Rutinas que evolucionan contigo, adaptándose a tu progreso, recuperación y feedback en tiempo real. Incluye técnica correcta con videos demostrativos.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🥗</div>
+                    <h3>Nutrición de Precisión</h3>
+                    <p>Planes alimenticios basados en tu metabolismo, preferencias y objetivos. Incluye recetas, lista de compras y seguimiento de macronutrientes automático.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Suplementación Basada en Evidencia</h3>
+                    <p>Recomendaciones científicas de suplementos que realmente funcionan para tus objetivos específicos, evitando gastos innecesarios en productos inefectivos.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Seguimiento Integral</h3>
+                    <p>Monitoriza tu progreso con métricas clave: composición corporal, rendimiento, adherencia y más. Datos procesables para optimizar tus resultados.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Ajustes Automáticos</h3>
+                    <p>Nuestro algoritmo detecta estancamientos y realiza ajustes proactivos en tu plan para mantener el progreso constante hacia tus objetivos.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚕️</div>
+                    <h3>Soporte de Expertos</h3>
+                    <p>Acceso a nutricionistas y entrenadores certificados para resolver dudas, ajustar tu plan y garantizar que avanzas de forma segura y efectiva.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Cómo transformarás tu cuerpo en 4 pasos</h2>
+            <p class="section-subtitle">Un proceso científico y probado que garantiza resultados medibles y sostenibles.</p>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Evaluación Completa</h3>
+                        <p>Completa nuestro detallado cuestionario de onboarding donde recopilamos información sobre tus objetivos, historial médico, preferencias alimentarias, disponibilidad y más.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Plan Personalizado</h3>
+                        <p>Nuestro algoritmo crea tu plan único de entrenamiento, nutrición y suplementación, que luego es revisado y ajustado por nuestro equipo de expertos.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Implementación y Seguimiento</h3>
+                        <p>Accede a tu dashboard personalizado, sigue tu plan y registra tu progreso. Nuestra plataforma te guía día a día hacia tus objetivos.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Optimización Continua</h3>
+                        <p>Basándonos en tus datos de progreso, el sistema realiza ajustes automáticos a tu plan para superar estancamientos y maximizar resultados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Planes que se adaptan a tus objetivos</h2>
+            <p class="section-subtitle">Elige el nivel de personalización y soporte que necesitas para alcanzar tus metas.</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Básico</h3>
+                        <div class="pricing-price">€19<span class="pricing-period">/mes</span></div>
+                        <p>Perfecto para comenzar tu transformación</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Rutinas de entrenamiento personalizadas</li>
+                            <li>Plan básico de alimentación</li>
+                            <li>Seguimiento de progreso básico</li>
+                            <li>Acceso a la comunidad</li>
+                            <li>Soporte por email</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="onboarding.html?plan=basic" class="cta-button secondary">Comenzar</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Pro</h3>
+                        <div class="pricing-price">€39<span class="pricing-period">/mes</span></div>
+                        <p>Recomendado para resultados óptimos</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Todo lo incluido en Básico</li>
+                            <li>Plan nutricional detallado</li>
+                            <li>Asesoría en suplementación básica</li>
+                            <li>Revisiones mensuales del plan</li>
+                            <li>Soporte prioritario</li>
+                            <li>Ajustes semiautomáticos</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="onboarding.html?plan=pro" class="cta-button">Comenzar</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Premium</h3>
+                        <div class="pricing-price">€69<span class="pricing-period">/mes</span></div>
+                        <p>Máxima personalización y resultados</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Todo lo incluido en Pro</li>
+                            <li>Planificación por objetivos específicos</li>
+                            <li>Asesoría en suplementación avanzada</li>
+                            <li>Revisiones quincenales</li>
+                            <li>Consultoría 1:1 mensual</li>
+                            <li>Ajustes automáticos en tiempo real</li>
+                            <li>Acceso anticipado a nuevas funciones</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="onboarding.html?plan=premium" class="cta-button secondary">Comenzar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿Listo para transformar tu cuerpo?</h2>
+            <p>Únete a miles de usuarios que ya han alcanzado sus objetivos fitness con nuestro enfoque científico y personalizado.</p>
+            <a href="onboarding.html" class="cta-button">Comenzar Mi Evaluación Gratuita</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FitSaaS</h3>
+                    <p>Plataforma SaaS integral de fitness que combina algoritmos de IA con supervisión humana experta para ofrecer programas altamente personalizados.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="pricing.html">Precios</a></li>
+                        <li><a href="onboarding.html">Registro</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Política de Privacidad</a></li>
+                        <li><a href="terms.html">Términos de Servicio</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
+                        <li><a href="tel:+34123456789">+34 123 456 789</a></li>
+                        <li><a href="contact.html">Formulario de Contacto</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 FitSaaS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para funcionalidades interactivas
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Ejemplo: Formulario de suscripción a newsletter
+            const newsletterForm = document.getElementById('newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+                    // Aquí iría la integración con el proveedor de email
+                    alert('¡Gracias por suscribirte! Te hemos enviado un email de confirmación.');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
