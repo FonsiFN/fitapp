@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding - FitSaaS | Comienza Tu Transformación</title>
+    <meta name="description" content="Completa tu evaluación personalizada para crear tu plan de entrenamiento y nutrición perfecto.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black-primary: #000000;
+            --black-secondary: #0f0f0f;
+            --black-tertiary: #1a1a1a;
+            --orange-primary: #FF6A00;
+            --orange-secondary: #FF944D;
+            --orange-gradient: linear-gradient(135deg, #FF6A00 0%, #FF944D 100%);
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-medium: #e9ecef;
+            --gray-dark: #495057;
+            --gray-darker: #343a40;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2.5rem;
+            --space-xl: 4rem;
+            --space-xxl: 6rem;
+            
+            --border-radius-sm: 4px;
+            --border-radius: 8px;
+            --border-radius-lg: 12px;
+            --border-radius-xl: 20px;
+            
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+            
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--black-primary);
+            line-height: 1.7;
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: var(--space-sm) 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.75rem;
+            color: var(--black-primary);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--orange-primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: var(--space-lg);
+        }
+        
+        nav a {
+            color: var(--black-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+        }
+        
+        nav a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .cta-button {
+            background: var(--orange-gradient);
+            color: var(--white);
+            border: none;
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Onboarding Header */
+        .onboarding-header {
+            background: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+        
+        .onboarding-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+            color: var(--white);
+        }
+        
+        .onboarding-header p {
+            font-size: 1.1rem;
+            color: var(--gray-medium);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: var(--white);
+            padding: var(--space-md) 0;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: var(--gray-medium);
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--orange-gradient);
+            width: 0%;
+            transition: width var(--transition-slow);
+        }
+        
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--gray-dark);
+        }
+
+        /* Onboarding Form */
+        .onboarding-form {
+            padding: var(--space-xl) 0;
+            background: var(--gray-light);
+            min-height: 60vh;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: var(--space-xl);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .form-step {
+            display: none;
+        }
+        
+        .form-step.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: var(--space-sm);
+            font-weight: 500;
+            color: var(--black-primary);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color var(--transition-fast);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--orange-primary);
+        }
+        
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+        }
+        
+        .btn {
+            padding: var(--space-sm) var(--space-lg);
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-normal);
+        }
+        
+        .btn-primary {
+            background: var(--orange-gradient);
+            color: var(--white);
+        }
+        
+        .btn-secondary {
+            background: var(--gray-medium);
+            color: var(--black-primary);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .radio-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-sm);
+        }
+        
+        .radio-option {
+            border: 2px solid var(--gray-medium);
+            border-radius: var(--border-radius);
+            padding: var(--space-md);
+            text-align: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .radio-option:hover {
+            border-color: var(--orange-primary);
+        }
+        
+        .radio-option.selected {
+            border-color: var(--orange-primary);
+            background: rgba(255, 106, 0, 0.05);
+        }
+        
+        .radio-option input {
+            display: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--black-primary);
+            color: var(--white);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--black-secondary);
+            color: var(--gray-medium);
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                padding: var(--space-lg);
+            }
+            
+            .radio-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">Fit<span>SaaS</span></a>
+            <nav>
+                <ul>
+                    <li><a href="services.html">Servicios</a></li>
+                    <li><a href="pricing.html">Precios</a></li>
+                    <li><a href="about.html">Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <a href="onboarding.html" class="cta-button">Comenzar Ahora</a>
+        </div>
+    </header>
+
+    <section class="onboarding-header">
+        <div class="container">
+            <h1>Comienza Tu Transformación</h1>
+            <p>Completa esta evaluación para crear tu plan 100% personalizado de entrenamiento y nutrición</p>
+        </div>
+    </section>
+
+    <section class="progress-container">
+        <div class="container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-steps">
+                <span>Objetivos</span>
+                <span>Medidas</span>
+                <span>Alimentación</span>
+                <span>Entrenamiento</span>
+                <span>Preferencias</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="onboarding-form">
+        <div class="container">
+            <form id="onboardingForm" class="form-container">
+                <!-- Step 1: Objetivos -->
+                <div class="form-step active" id="step1">
+                    <h2 style="margin-bottom: var(--space-lg);">¿Cuál es tu objetivo principal?</h2>
+                    
+                    <div class="form-group">
+                        <label>Selecciona tu objetivo principal:</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="goal" value="fat-loss">
+                                <div>Pérdida de Grasa</div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="goal" value="muscle-gain">
+                                <div>Ganancia Muscular</div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="goal" value="maintenance">
+                                <div>Mantenimiento</div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="goal" value="performance">
+                                <div>Rendimiento Deportivo</div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeline">¿En qué timeframe quieres alcanzar tu objetivo?</label>
+                        <select id="timeline" name="timeline" class="form-control">
+                            <option value="">Selecciona un timeframe</option>
+                            <option value="1-3">1-3 meses</option>
+                            <option value="3-6">3-6 meses</option>
+                            <option value="6-12">6-12 meses</option>
+                            <option value="12+">Más de 1 año</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <div></div> <!-- Empty div for spacing -->
+                        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Medidas -->
+                <div class="form-step" id="step2">
+                    <h2 style="margin-bottom: var(--space-lg);">Tus medidas actuales</h2>
+                    
+                    <div class="form-group">
+                        <label for="weight">Peso actual (kg)</label>
+                        <input type="number" id="weight" name="weight" class="form-control" step="0.1" min="30" max="200">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="height">Altura (cm)</label>
+                        <input type="number" id="height" name="height" class="form-control" min="100" max="250">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="age">Edad</label>
+                        <input type="number" id="age" name="age" class="form-control" min="16" max="100">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Género</label>
+                        <div class="radio-group" style="grid-template-columns: 1fr 1fr;">
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="male">
+                                <div>Hombre</div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="female">
+                                <div>Mujer</div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Anterior</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(3)">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Alimentación -->
+                <div class="form-step" id="step3">
+                    <h2 style="margin-bottom: var(--space-lg);">Preferencias y restricciones alimentarias</h2>
+                    
+                    <div class="form-group">
+                        <label for="diet-type">Tipo de alimentación preferida</label>
+                        <select id="diet-type" name="diet-type" class="form-control">
+                            <option value="">Selecciona tu preferencia</option>
+                            <option value="omnivore">Omnívoro</option>
+                            <option value="vegetarian">Vegetariano</option>
+                            <option value="vegan">Vegano</option>
+                            <option value="pescatarian">Pescetariano</option>
+                            <option value="flexitarian">Flexitariano</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="allergies">Alergias o intolerancias alimentarias</label>
+                        <textarea id="allergies" name="allergies" class="form-control" rows="3" placeholder="Ej: lactosa, gluten, frutos secos..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dislikes">Alimentos que no te gustan</label>
+                        <textarea id="dislikes" name="dislikes" class="form-control" rows="3" placeholder="Ej: brócoli, pescado, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Anterior</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(4)">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Entrenamiento -->
+                <div class="form-step" id="step4">
+                    <h2 style="margin-bottom: var(--space-lg);">Tu experiencia y disponibilidad para entrenar</h2>
+                    
+                    <div class="form-group">
+                        <label>Nivel de experiencia</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="experience" value="beginner">
+                                <div>Principiante (0-6 meses)</div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="experience" value="intermediate">
+                                <div>Intermedio (6 meses - 2 años)</div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="experience" value="advanced">
+                                <div>Avanzado (2+ años)</div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Equipamiento disponible</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="equipment" value="full-gym">
+                                <div>Gimnasio completo</div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="equipment" value="home-weights">
+                                <div>Pesas en casa</div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="equipment" value="resistance-bands">
+                                <div>Bandas de resistencia</div>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="equipment" value="bodyweight">
+                                <div>Solo peso corporal</div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="training-days">Días disponibles para entrenar por semana</label>
+                        <select id="training-days" name="training-days" class="form-control">
+                            <option value="">Selecciona número de días</option>
+                            <option value="2">2 días</option>
+                            <option value="3">3 días</option>
+                            <option value="4">4 días</option>
+                            <option value="5">5 días</option>
+                            <option value="6">6 días</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Anterior</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(5)">Siguiente</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Preferencias Finales -->
+                <div class="form-step" id="step5">
+                    <h2 style="margin-bottom: var(--space-lg);">Preferencias finales</h2>
+                    
+                    <div class="form-group">
+                        <label for="injuries">Lesiones o condiciones médicas relevantes</label>
+                        <textarea id="injuries" name="injuries" class="form-control" rows="3" placeholder="Ej: lesión de rodilla, hernia discal, etc."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sleep">Horas de sueño promedio por noche</label>
+                        <select id="sleep" name="sleep" class="form-control">
+                            <option value="">Selecciona horas de sueño</option>
+                            <option value="5">Menos de 6 horas</option>
+                            <option value="6">6 horas</option>
+                            <option value="7">7 horas</option>
+                            <option value="8">8 horas</option>
+                            <option value="9">9+ horas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="stress">Nivel de estrés general</label>
+                        <select id="stress" name="stress" class="form-control">
+                            <option value="">Selecciona nivel de estrés</option>
+                            <option value="low">Bajo</option>
+                            <option value="medium">Medio</option>
+                            <option value="high">Alto</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(4)">Anterior</button>
+                        <button type="submit" class="btn btn-primary">Crear Mi Plan</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FitSaaS</h3>
+                    <p>Transformando cuerpos mediante ciencia y tecnología avanzada.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="services.html">Servicios</a></li>
+                        <li><a href="pricing.html">Precios</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacidad</a></li>
+                        <li><a href="terms.html">Términos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
+                        <li><a href="contact.html">Formulario</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 FitSaaS. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentStep = 1;
+        const totalSteps = 5;
+        
+        function updateProgress() {
+            const progress = (currentStep / totalSteps) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+        
+        function showStep(stepNumber) {
+            // Hide all steps
+            document.querySelectorAll('.form-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            // Show current step
+            document.getElementById(`step${stepNumber}`).classList.add('active');
+            
+            // Update radio options styling
+            updateRadioOptions();
+        }
+        
+        function nextStep(next) {
+            if (validateStep(currentStep)) {
+                currentStep = next;
+                showStep(currentStep);
+                updateProgress();
+            }
+        }
+        
+        function prevStep(prev) {
+            currentStep = prev;
+            showStep(currentStep);
+            updateProgress();
+        }
+        
+        function validateStep(step) {
+            // Basic validation - expand based on requirements
+            return true;
+        }
+        
+        function updateRadioOptions() {
+            document.querySelectorAll('.radio-option').forEach(option => {
+                const radio = option.querySelector('input[type="radio"]');
+                if (radio.checked) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
+        }
+        
+        // Initialize radio option styling
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            updateRadioOptions();
+            
+            // Add click handlers for radio options
+            document.querySelectorAll('.radio-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
+                    updateRadioOptions();
+                });
+            });
+            
+            // Form submission
+            document.getElementById('onboardingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Here you would typically send the data to your backend
+                alert('¡Formulario completado! Redirigiendo a tu dashboard...');
+                window.location.href = 'dashboard.html';
+            });
+        });
+    </script>
+</body>
+</html>
