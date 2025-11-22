@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios - FitSaaS | Entrenamiento, Nutrición y Suplementación Personalizada</title>
-    <meta name="description" content="Descubre nuestros servicios completos de fitness: entrenamiento personalizado, planes nutricionales y asesoría en suplementación basada en ciencia.">
+    <title>Precios - FitSaaS | Planes de Entrenamiento y Nutrición</title>
+    <meta name="description" content="Elige el plan que mejor se adapte a tus objetivos fitness. Desde básico hasta premium con coaching personalizado.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Reutilizando las variables CSS del index */
         :root {
             --black-primary: #000000;
             --black-secondary: #0f0f0f;
@@ -68,7 +67,7 @@
             padding: 0 var(--space-md);
         }
         
-        /* Header - Mismo estilo que index */
+        /* Header */
         header {
             background-color: var(--white);
             padding: var(--space-sm) 0;
@@ -156,81 +155,163 @@
             margin: 0 auto;
         }
 
-        /* Services Detail */
-        .services-detail {
+        /* Pricing Section */
+        .pricing {
             padding: var(--space-xxl) 0;
-        }
-        
-        .service-hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-            align-items: center;
-            margin-bottom: var(--space-xxl);
-        }
-        
-        .service-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: var(--space-md);
-        }
-        
-        .service-image {
             background: var(--gray-light);
-            height: 400px;
-            border-radius: var(--border-radius-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray-dark);
         }
         
-        .features-grid {
+        .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
-            margin: var(--space-xl) 0;
-        }
-        
-        .feature-card {
-            background: var(--white);
-            padding: var(--space-lg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-md);
-            border-left: 4px solid var(--orange-primary);
-        }
-        
-        /* Process Section */
-        .process {
-            background: var(--gray-light);
-            padding: var(--space-xxl) 0;
-        }
-        
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: var(--space-lg);
             margin-top: var(--space-xl);
         }
         
-        .process-step {
-            text-align: center;
-            padding: var(--space-lg);
+        .pricing-card {
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-normal);
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
         
-        .step-icon {
-            width: 80px;
-            height: 80px;
+        .pricing-card.featured {
+            border: 2px solid var(--orange-primary);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-5px);
+        }
+        
+        .pricing-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
             background: var(--orange-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--space-md);
             color: var(--white);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--border-radius);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--gray-medium);
+        }
+        
+        .pricing-name {
             font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--orange-primary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .pricing-period {
+            color: var(--gray-dark);
+            font-size: 0.9rem;
+        }
+        
+        .pricing-features {
+            flex-grow: 1;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .pricing-features li:before {
+            content: '✓';
+            color: var(--orange-primary);
+            font-weight: bold;
+            margin-right: var(--space-sm);
+        }
+        
+        .pricing-features li.disabled {
+            color: var(--gray-dark);
+            opacity: 0.5;
+        }
+        
+        .pricing-features li.disabled:before {
+            content: '✗';
+            color: var(--gray-dark);
+        }
+        
+        .pricing-cta {
+            margin-top: auto;
         }
 
-        /* Footer - IDÉNTICO al del código anterior */
+        /* FAQ Section */
+        .faq {
+            padding: var(--space-xxl) 0;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--orange-primary);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--black-primary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--orange-gradient);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+        }
+        
+        .cta-section .cta-button {
+            background: var(--white);
+            color: var(--orange-primary);
+        }
+
+        /* Footer - IDÉNTICO al del código original */
         footer {
             background-color: var(--black-primary);
             color: var(--white);
@@ -312,7 +393,15 @@
         }
         
         @media (max-width: 768px) {
-            .service-hero {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+            
+            .faq-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -342,132 +431,140 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Nuestros Servicios</h1>
-            <p>Una suite completa de herramientas y servicios diseñados para maximizar tus resultados fitness</p>
+            <h1>Planes y Precios</h1>
+            <p>Elige el nivel de personalización y soporte que necesitas para alcanzar tus metas fitness</p>
         </div>
     </section>
 
-    <section class="services-detail">
+    <section class="pricing">
         <div class="container">
-            <!-- Entrenamiento Personalizado -->
-            <div class="service-hero">
-                <div class="service-content">
-                    <h2>Entrenamiento Personalizado</h2>
-                    <p>Programas de ejercicio diseñados específicamente para tus objetivos, nivel de experiencia y equipamiento disponible. Nuestro sistema se adapta a tu progreso en tiempo real.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <h3>Adaptación Continua</h3>
-                            <p>Tu plan evoluciona contigo, ajustándose automáticamente según tu progreso y feedback</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Técnica Perfecta</h3>
-                            <p>Videos demostrativos y guías detalladas para ejecutar cada ejercicio con la forma correcta</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Variedad de Enfoques</h3>
-                            <p>Desde hipertrofia hasta fuerza máxima, pasando por resistencia y acondicionamiento</p>
-                        </div>
+            <div class="pricing-grid">
+                <!-- Plan Básico -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Básico</h3>
+                        <div class="pricing-price">€19<span class="pricing-period">/mes</span></div>
+                        <p>Perfecto para comenzar tu transformación</p>
                     </div>
-                    
-                    <a href="onboarding.html" class="cta-button">Comenzar Entrenamiento</a>
-                </div>
-                <div class="service-image">
-                    Imagen de Entrenamiento
-                </div>
-            </div>
-
-            <!-- Nutrición -->
-            <div class="service-hero">
-                <div class="service-image">
-                    Imagen de Nutrición
-                </div>
-                <div class="service-content">
-                    <h2>Nutrición de Precisión</h2>
-                    <p>Planes alimenticios completamente personalizados que consideran tus preferencias, alergias, horarios y objetivos específicos de composición corporal.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <h3>Planificación de Comidas</h3>
-                            <p>Recetas específicas, listas de compra automáticas y preparación semanal organizada</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Ajuste de Macronutrientes</h3>
-                            <p>Distribución precisa de proteínas, carbohidratos y grasas según tu metabolismo y objetivos</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Flexibilidad Alimentaria</h3>
-                            <p>Adaptación a cualquier estilo de alimentación: omnívoro, vegetariano, vegano, etc.</p>
-                        </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Rutinas de entrenamiento personalizadas</li>
+                            <li>Plan básico de alimentación</li>
+                            <li>Seguimiento de progreso básico</li>
+                            <li>Acceso a la comunidad</li>
+                            <li>Soporte por email</li>
+                            <li class="disabled">Asesoría en suplementación</li>
+                            <li class="disabled">Revisiones mensuales</li>
+                            <li class="disabled">Consultoría 1:1</li>
+                        </ul>
                     </div>
-                    
-                    <a href="onboarding.html" class="cta-button">Optimizar Mi Nutrición</a>
-                </div>
-            </div>
-
-            <!-- Suplementación -->
-            <div class="service-hero">
-                <div class="service-content">
-                    <h2>Asesoría en Suplementación</h2>
-                    <p>Recomendaciones basadas en evidencia científica para optimizar tu rendimiento y resultados, evitando gastos innecesarios en productos inefectivos.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <h3>Análisis Científico</h3>
-                            <p>Evaluación de estudios y eficacia real de cada suplemento para tus objetivos específicos</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Protocolos de Uso</h3>
-                            <p>Dosificación precisa, timing de consumo y ciclos de suplementación cuando sea necesario</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Control de Calidad</h3>
-                            <p>Recomendación de marcas verificadas y análisis de pureza de productos</p>
-                        </div>
+                    <div class="pricing-cta">
+                        <a href="onboarding.html?plan=basic" class="cta-button">Comenzar</a>
                     </div>
-                    
-                    <a href="onboarding.html" class="cta-button">Evaluar Mi Suplementación</a>
                 </div>
-                <div class="service-image">
-                    Imagen de Suplementación
+                
+                <!-- Plan Pro -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MÁS POPULAR</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Pro</h3>
+                        <div class="pricing-price">€39<span class="pricing-period">/mes</span></div>
+                        <p>Recomendado para resultados óptimos</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Todo lo incluido en Básico</li>
+                            <li>Plan nutricional detallado</li>
+                            <li>Asesoría en suplementación básica</li>
+                            <li>Revisiones mensuales del plan</li>
+                            <li>Soporte prioritario</li>
+                            <li>Ajustes semiautomáticos</li>
+                            <li class="disabled">Consultoría 1:1 mensual</li>
+                            <li class="disabled">Ajustes en tiempo real</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="onboarding.html?plan=pro" class="cta-button">Comenzar</a>
+                    </div>
+                </div>
+                
+                <!-- Plan Premium -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-name">Premium</h3>
+                        <div class="pricing-price">€69<span class="pricing-period">/mes</span></div>
+                        <p>Máxima personalización y resultados</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li>Todo lo incluido en Pro</li>
+                            <li>Planificación por objetivos específicos</li>
+                            <li>Asesoría en suplementación avanzada</li>
+                            <li>Revisiones quincenales</li>
+                            <li>Consultoría 1:1 mensual</li>
+                            <li>Ajustes automáticos en tiempo real</li>
+                            <li>Acceso anticipado a nuevas funciones</li>
+                            <li>Análisis de composición corporal avanzado</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-cta">
+                        <a href="onboarding.html?plan=premium" class="cta-button">Comenzar</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="process">
+    <section class="faq">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: var(--space-md);">Cómo Funciona Nuestro Proceso</h2>
+            <h2 style="text-align: center; margin-bottom: var(--space-md);">Preguntas Frecuentes</h2>
             <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-xl); color: var(--gray-dark);">
-                Un sistema probado que garantiza resultados medibles y sostenibles
+                Resolvemos tus dudas sobre nuestros planes y servicios
             </p>
             
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-icon">📋</div>
-                    <h3>Evaluación Completa</h3>
-                    <p>Análisis detallado de tu situación actual, objetivos y preferencias</p>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Puedo cambiar de plan en cualquier momento?</h3>
+                    <p>Sí, puedes cambiar entre planes en cualquier momento. La diferencia de precio se prorrateará en tu próxima factura.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-icon">🎯</div>
-                    <h3>Plan Personalizado</h3>
-                    <p>Creación de tu programa único de entrenamiento y nutrición</p>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Hay compromiso de permanencia?</h3>
+                    <p>No, todos nuestros planes son mensuales sin compromiso de permanencia. Puedes cancelar en cualquier momento.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-icon">📱</div>
-                    <h3>Implementación</h3>
-                    <p>Acceso a tu dashboard y comienzo del programa guiado</p>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Qué métodos de pago aceptan?</h3>
+                    <p>Aceptamos tarjetas de crédito/débito (Visa, MasterCard, American Express) y PayPal.</p>
                 </div>
-                <div class="process-step">
-                    <div class="step-icon">📊</div>
-                    <h3>Seguimiento y Ajustes</h3>
-                    <p>Monitorización continua y optimización del plan</p>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Ofrecen reembolsos?</h3>
+                    <p>Ofrecemos garantía de satisfacción de 14 días. Si no estás contento con el servicio, te reembolsamos el primer mes.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Los planes incluyen dieta y entrenamiento?</h3>
+                    <p>Sí, todos los planes incluyen tanto el componente de entrenamiento como el de nutrición personalizados.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Puedo pausar mi suscripción?</h3>
+                    <p>Sí, puedes pausar tu suscripción por un máximo de 2 meses si necesitas un descanso por viaje o lesión.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer IDÉNTICO al del código anterior -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>¿No estás seguro de qué plan elegir?</h2>
+            <p style="margin-bottom: var(--space-lg); color: rgba(255,255,255,0.9);">Completa nuestra evaluación gratuita y te recomendaremos el plan ideal para tus objetivos</p>
+            <a href="onboarding.html" class="cta-button">Comenzar Evaluación Gratuita</a>
+        </div>
+    </section>
+
+    <!-- Footer IDÉNTICO al del código original -->
     <footer>
         <div class="container">
             <div class="footer-content">
