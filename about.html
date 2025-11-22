@@ -303,11 +303,11 @@
             color: var(--orange-primary);
         }
 
-        /* Footer */
+        /* Footer - IDÉNTICO al del código original */
         footer {
             background-color: var(--black-primary);
             color: var(--white);
-            padding: var(--space-xl) 0 var(--space-lg);
+            padding: var(--space-xxl) 0 var(--space-lg);
         }
         
         .footer-content {
@@ -317,13 +317,73 @@
             margin-bottom: var(--space-xl);
         }
         
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p {
+            color: var(--gray-medium);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-section a {
+            color: var(--gray-medium);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-section a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--black-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        
+        .social-link:hover {
+            background: var(--orange-primary);
+            transform: translateY(-2px);
+        }
+        
         .copyright {
             text-align: center;
             padding-top: var(--space-lg);
             border-top: 1px solid var(--black-secondary);
             color: var(--gray-medium);
+            font-size: 0.9rem;
         }
 
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-lg);
+            }
+        }
+        
         @media (max-width: 768px) {
             .mission-grid {
                 grid-template-columns: 1fr;
@@ -345,6 +405,7 @@
             
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: var(--space-lg);
             }
         }
     </style>
@@ -496,36 +557,50 @@
         </div>
     </section>
 
+    <!-- Footer IDÉNTICO al del código original -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>FitSaaS</h3>
-                    <p>Transformando cuerpos mediante ciencia y tecnología avanzada.</p>
+                    <p>Plataforma SaaS integral de fitness que combina algoritmos de IA con supervisión humana experta para ofrecer programas altamente personalizados.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
                 </div>
+                
                 <div class="footer-section">
-                    <h3>Enlaces</h3>
+                    <h3>Enlaces Rápidos</h3>
                     <ul>
                         <li><a href="index.html">Inicio</a></li>
                         <li><a href="services.html">Servicios</a></li>
                         <li><a href="pricing.html">Precios</a></li>
+                        <li><a href="onboarding.html">Registro</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="privacy.html">Privacidad</a></li>
-                        <li><a href="terms.html">Términos</a></li>
+                        <li><a href="privacy.html">Política de Privacidad</a></li>
+                        <li><a href="terms.html">Términos de Servicio</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Contacto</h3>
                     <ul>
                         <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
-                        <li><a href="contact.html">Formulario</a></li>
+                        <li><a href="tel:+34123456789">+34 123 456 789</a></li>
+                        <li><a href="contact.html">Formulario de Contacto</a></li>
                     </ul>
                 </div>
             </div>
+            
             <div class="copyright">
                 <p>&copy; 2023 FitSaaS. Todos los derechos reservados.</p>
             </div>
