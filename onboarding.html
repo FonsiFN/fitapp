@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitApp - Onboarding </title>
+    <title>FitApp - Onboarding Completo</title>
     <meta name="description" content="Completa tu evaluación personalizada para crear tu plan de entrenamiento y nutrición perfecto.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -160,12 +160,15 @@
             background: var(--white);
             padding: var(--space-md) 0;
             box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 80px;
+            z-index: 999;
         }
         
         .progress-bar {
-            height: 6px;
+            height: 8px;
             background: var(--gray-medium);
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
             margin-bottom: var(--space-sm);
         }
@@ -182,30 +185,67 @@
             justify-content: space-between;
             font-size: 0.8rem;
             color: var(--gray-dark);
+            font-weight: 500;
         }
 
         /* Onboarding Form */
         .onboarding-form {
             padding: var(--space-xl) 0;
             background: var(--gray-light);
-            min-height: 60vh;
+            min-height: 80vh;
         }
         
         .form-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: var(--white);
             padding: var(--space-xl);
             border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
         }
         
         .form-step {
             display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .form-step.active {
             display: block;
+        }
+        
+        .step-header {
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+        
+        .step-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: var(--space-sm);
+            color: var(--black-primary);
+        }
+        
+        .step-header p {
+            color: var(--gray-dark);
+            font-size: 1rem;
+        }
+        
+        .form-section {
+            background: var(--gray-light);
+            padding: var(--space-lg);
+            border-radius: var(--border-radius);
+            margin-bottom: var(--space-lg);
+            border-left: 4px solid var(--orange-primary);
+        }
+        
+        .form-section h3 {
+            margin-bottom: var(--space-md);
+            color: var(--black-primary);
+            font-size: 1.2rem;
         }
         
         .form-group {
@@ -215,29 +255,34 @@
         .form-group label {
             display: block;
             margin-bottom: var(--space-sm);
-            font-weight: 500;
+            font-weight: 600;
             color: var(--black-primary);
+            font-size: 0.95rem;
         }
         
         .form-control {
             width: 100%;
             padding: var(--space-sm);
-            border: 1px solid var(--gray-medium);
+            border: 2px solid var(--gray-medium);
             border-radius: var(--border-radius);
             font-family: var(--font-body);
             font-size: 1rem;
-            transition: border-color var(--transition-fast);
+            transition: all var(--transition-fast);
+            background: var(--white);
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--orange-primary);
+            box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.1);
         }
         
         .form-actions {
             display: flex;
             justify-content: space-between;
             margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--gray-medium);
         }
         
         .btn {
@@ -248,6 +293,8 @@
             font-weight: 600;
             cursor: pointer;
             transition: all var(--transition-normal);
+            font-size: 1rem;
+            min-width: 120px;
         }
         
         .btn-primary {
@@ -265,6 +312,13 @@
             box-shadow: var(--shadow-md);
         }
         
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
         .radio-group {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -278,26 +332,87 @@
             text-align: center;
             cursor: pointer;
             transition: all var(--transition-fast);
+            background: var(--white);
         }
         
         .radio-option:hover {
             border-color: var(--orange-primary);
+            transform: translateY(-2px);
         }
         
         .radio-option.selected {
             border-color: var(--orange-primary);
             background: rgba(255, 106, 0, 0.05);
+            box-shadow: var(--shadow-sm);
         }
         
         .radio-option input {
             display: none;
         }
+        
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-sm);
+        }
+        
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            border: 1px solid var(--gray-medium);
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+        
+        .checkbox-option:hover {
+            border-color: var(--orange-primary);
+        }
+        
+        .checkbox-option.selected {
+            border-color: var(--orange-primary);
+            background: rgba(255, 106, 0, 0.05);
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+        
+        .range-value {
+            min-width: 60px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--orange-primary);
+        }
+        
+        input[type="range"] {
+            flex: 1;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--gray-medium);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--orange-primary);
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
 
-        /* Footer */
+        /* Footer - CORREGIDO con enlaces en gris claro y efecto hover naranja */
         footer {
             background-color: var(--black-primary);
             color: var(--white);
-            padding: var(--space-xl) 0 var(--space-lg);
+            padding: var(--space-xxl) 0 var(--space-lg);
         }
         
         .footer-content {
@@ -307,24 +422,100 @@
             margin-bottom: var(--space-xl);
         }
         
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: var(--space-md);
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p {
+            color: var(--gray-medium);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section li {
+            margin-bottom: var(--space-sm);
+        }
+        
+        /* CORRECCIÓN: Enlaces en gris claro con hover naranja */
+        .footer-section a {
+            color: var(--gray-medium);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-section a:hover {
+            color: var(--orange-primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--black-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+        
+        .social-link:hover {
+            background: var(--orange-primary);
+            transform: translateY(-2px);
+        }
+        
         .copyright {
             text-align: center;
             padding-top: var(--space-lg);
             border-top: 1px solid var(--black-secondary);
             color: var(--gray-medium);
+            font-size: 0.9rem;
         }
 
+        @media (max-width: 1024px) {
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-lg);
+            }
+        }
+        
         @media (max-width: 768px) {
             .form-container {
                 padding: var(--space-lg);
+                margin: 0 var(--space-sm);
             }
             
             .radio-group {
                 grid-template-columns: 1fr;
             }
             
+            .checkbox-group {
+                grid-template-columns: 1fr;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+            
+            .form-actions {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+            
+            .btn {
+                width: 100%;
             }
         }
     </style>
@@ -349,7 +540,7 @@
     <section class="onboarding-header">
         <div class="container">
             <h1>Comienza Tu Transformación</h1>
-            <p>Completa esta evaluación para crear tu plan 100% personalizado de entrenamiento y nutrición</p>
+            <p>Completa esta evaluación integral para crear tu plan 100% personalizado de entrenamiento y nutrición</p>
         </div>
     </section>
 
@@ -363,6 +554,7 @@
                 <span>Medidas</span>
                 <span>Alimentación</span>
                 <span>Entrenamiento</span>
+                <span>Salud</span>
                 <span>Preferencias</span>
             </div>
         </div>
@@ -373,250 +565,591 @@
             <form id="onboardingForm" class="form-container">
                 <!-- Step 1: Objetivos -->
                 <div class="form-step active" id="step1">
-                    <h2 style="margin-bottom: var(--space-lg);">¿Cuál es tu objetivo principal?</h2>
+                    <div class="step-header">
+                        <h2>🎯 Tus Objetivos Principales</h2>
+                        <p>Define qué quieres lograr con nuestro programa</p>
+                    </div>
                     
-                    <div class="form-group">
-                        <label>Selecciona tu objetivo principal:</label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="goal" value="fat-loss">
-                                <div>Pérdida de Grasa</div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="goal" value="muscle-gain">
-                                <div>Ganancia Muscular</div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="goal" value="maintenance">
-                                <div>Mantenimiento</div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="goal" value="performance">
-                                <div>Rendimiento Deportivo</div>
-                            </label>
+                    <div class="form-section">
+                        <h3>Objetivo Principal</h3>
+                        <div class="form-group">
+                            <label>Selecciona tu objetivo principal:</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="goal" value="fat-loss" required>
+                                    <div>
+                                        <strong>Pérdida de Grasa</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Reducir porcentaje de grasa corporal</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="goal" value="muscle-gain">
+                                    <div>
+                                        <strong>Ganancia Muscular</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Aumentar masa muscular</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="goal" value="recomposition">
+                                    <div>
+                                        <strong>Recomposición Corporal</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Perder grasa y ganar músculo</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="goal" value="performance">
+                                    <div>
+                                        <strong>Rendimiento Deportivo</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Mejorar fuerza y resistencia</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Timeline y Metas</h3>
+                        <div class="form-group">
+                            <label for="timeline">¿En qué plazo quieres alcanzar tu objetivo?</label>
+                            <select id="timeline" name="timeline" class="form-control" required>
+                                <option value="">Selecciona un timeframe</option>
+                                <option value="1-3">1-3 meses (Intensivo)</option>
+                                <option value="3-6">3-6 meses (Recomendado)</option>
+                                <option value="6-12">6-12 meses (Sostenible)</option>
+                                <option value="12+">Más de 1 año (Largo plazo)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Metas específicas (selecciona todas las que apliquen):</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="specific-goals" value="energy">
+                                    <span>Más energía</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="specific-goals" value="confidence">
+                                    <span>Mejor autoestima</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="specific-goals" value="health">
+                                    <span>Mejor salud</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="specific-goals" value="appearance">
+                                    <span>Mejor apariencia</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="timeline">¿En qué timeframe quieres alcanzar tu objetivo?</label>
-                        <select id="timeline" name="timeline" class="form-control">
-                            <option value="">Selecciona un timeframe</option>
-                            <option value="1-3">1-3 meses</option>
-                            <option value="3-6">3-6 meses</option>
-                            <option value="6-12">6-12 meses</option>
-                            <option value="12+">Más de 1 año</option>
-                        </select>
-                    </div>
-                    
                     <div class="form-actions">
-                        <div></div> <!-- Empty div for spacing -->
-                        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Siguiente</button>
+                        <div></div>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(2)">Siguiente →</button>
                     </div>
                 </div>
 
-                <!-- Step 2: Medidas -->
+                <!-- Step 2: Medidas Corporales -->
                 <div class="form-step" id="step2">
-                    <h2 style="margin-bottom: var(--space-lg);">Tus medidas actuales</h2>
-                    
-                    <div class="form-group">
-                        <label for="weight">Peso actual (kg)</label>
-                        <input type="number" id="weight" name="weight" class="form-control" step="0.1" min="30" max="200">
+                    <div class="step-header">
+                        <h2>📏 Tus Medidas Corporales</h2>
+                        <p>Información esencial para calcular tus necesidades</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="height">Altura (cm)</label>
-                        <input type="number" id="height" name="height" class="form-control" min="100" max="250">
+                    <div class="form-section">
+                        <h3>Datos Básicos</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+                            <div class="form-group">
+                                <label for="weight">Peso actual (kg)</label>
+                                <input type="number" id="weight" name="weight" class="form-control" step="0.1" min="30" max="200" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="height">Altura (cm)</label>
+                                <input type="number" id="height" name="height" class="form-control" min="100" max="250" required>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md);">
+                            <div class="form-group">
+                                <label for="age">Edad</label>
+                                <input type="number" id="age" name="age" class="form-control" min="16" max="100" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Género</label>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
+                                    <label class="radio-option">
+                                        <input type="radio" name="gender" value="male" required>
+                                        <div>Hombre</div>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="gender" value="female">
+                                        <div>Mujer</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="age">Edad</label>
-                        <input type="number" id="age" name="age" class="form-control" min="16" max="100">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Género</label>
-                        <div class="radio-group" style="grid-template-columns: 1fr 1fr;">
-                            <label class="radio-option">
-                                <input type="radio" name="gender" value="male">
-                                <div>Hombre</div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="gender" value="female">
-                                <div>Mujer</div>
-                            </label>
+
+                    <div class="form-section">
+                        <h3>Nivel de Actividad Actual</h3>
+                        <div class="form-group">
+                            <label>¿Cómo describirías tu nivel de actividad actual?</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="activity-level" value="sedentary">
+                                    <div>
+                                        <strong>Sedentario</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Poco o ningún ejercicio</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="activity-level" value="light">
+                                    <div>
+                                        <strong>Ligero</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Ejercicio 1-3 días/semana</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="activity-level" value="moderate">
+                                    <div>
+                                        <strong>Moderado</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Ejercicio 3-5 días/semana</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="activity-level" value="active">
+                                    <div>
+                                        <strong>Activo</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Ejercicio 6-7 días/semana</p>
+                                    </div>
+                                </label>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" onclick="prevStep(1)">Anterior</button>
-                        <button type="button" class="btn btn-primary" onclick="nextStep(3)">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(1)">← Anterior</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(3)">Siguiente →</button>
                     </div>
                 </div>
 
                 <!-- Step 3: Alimentación -->
                 <div class="form-step" id="step3">
-                    <h2 style="margin-bottom: var(--space-lg);">Preferencias y restricciones alimentarias</h2>
-                    
-                    <div class="form-group">
-                        <label for="diet-type">Tipo de alimentación preferida</label>
-                        <select id="diet-type" name="diet-type" class="form-control">
-                            <option value="">Selecciona tu preferencia</option>
-                            <option value="omnivore">Omnívoro</option>
-                            <option value="vegetarian">Vegetariano</option>
-                            <option value="vegan">Vegano</option>
-                            <option value="pescatarian">Pescetariano</option>
-                            <option value="flexitarian">Flexitariano</option>
-                        </select>
+                    <div class="step-header">
+                        <h2>🍎 Hábitos Alimentarios</h2>
+                        <p>Información sobre tu alimentación actual y preferencias</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="allergies">Alergias o intolerancias alimentarias</label>
-                        <textarea id="allergies" name="allergies" class="form-control" rows="3" placeholder="Ej: lactosa, gluten, frutos secos..."></textarea>
+                    <div class="form-section">
+                        <h3>Patrón Alimentario Actual</h3>
+                        <div class="form-group">
+                            <label for="diet-type">Tipo de alimentación preferida</label>
+                            <select id="diet-type" name="diet-type" class="form-control" required>
+                                <option value="">Selecciona tu preferencia</option>
+                                <option value="omnivore">Omnívoro (sin restricciones)</option>
+                                <option value="vegetarian">Vegetariano</option>
+                                <option value="vegan">Vegano</option>
+                                <option value="pescatarian">Pescetariano</option>
+                                <option value="keto">Cetogénico (Keto)</option>
+                                <option value="paleo">Paleo</option>
+                                <option value="mediterranean">Mediterránea</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>¿Cuántas comidas haces al día normalmente?</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="meals-per-day" value="2">
+                                    <div>2 comidas</div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="meals-per-day" value="3">
+                                    <div>3 comidas</div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="meals-per-day" value="4">
+                                    <div>4 comidas</div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="meals-per-day" value="5+">
+                                    <div>5+ comidas</div>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="dislikes">Alimentos que no te gustan</label>
-                        <textarea id="dislikes" name="dislikes" class="form-control" rows="3" placeholder="Ej: brócoli, pescado, etc."></textarea>
+
+                    <div class="form-section">
+                        <h3>Restricciones y Preferencias</h3>
+                        <div class="form-group">
+                            <label for="allergies">Alergias o intolerancias alimentarias</label>
+                            <textarea id="allergies" name="allergies" class="form-control" rows="3" placeholder="Ej: lactosa, gluten, frutos secos, mariscos... (dejar en blanco si no hay)"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="dislikes">Alimentos que no te gustan o evitas</label>
+                            <textarea id="dislikes" name="dislikes" class="form-control" rows="3" placeholder="Ej: brócoli, pescado, avena, etc. (dejar en blanco si no hay)"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Hábitos alimentarios adicionales:</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="eating-habits" value="alcohol">
+                                    <span>Consumo alcohol regularmente</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="eating-habits" value="sugar">
+                                    <span>Alto consumo de azúcar</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="eating-habits" value="processed">
+                                    <span>Mucha comida procesada</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="eating-habits" value="supplements">
+                                    <span>Tomo suplementos actualmente</span>
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">Anterior</button>
-                        <button type="button" class="btn btn-primary" onclick="nextStep(4)">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(2)">← Anterior</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(4)">Siguiente →</button>
                     </div>
                 </div>
 
                 <!-- Step 4: Entrenamiento -->
                 <div class="form-step" id="step4">
-                    <h2 style="margin-bottom: var(--space-lg);">Tu experiencia y disponibilidad para entrenar</h2>
-                    
-                    <div class="form-group">
-                        <label>Nivel de experiencia</label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="experience" value="beginner">
-                                <div>Principiante (0-6 meses)</div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="experience" value="intermediate">
-                                <div>Intermedio (6 meses - 2 años)</div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="experience" value="advanced">
-                                <div>Avanzado (2+ años)</div>
-                            </label>
-                        </div>
+                    <div class="step-header">
+                        <h2>💪 Experiencia y Entrenamiento</h2>
+                        <p>Tu historial de ejercicio y disponibilidad</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label>Equipamiento disponible</label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="equipment" value="full-gym">
-                                <div>Gimnasio completo</div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="equipment" value="home-weights">
-                                <div>Pesas en casa</div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="equipment" value="resistance-bands">
-                                <div>Bandas de resistencia</div>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="equipment" value="bodyweight">
-                                <div>Solo peso corporal</div>
-                            </label>
+                    <div class="form-section">
+                        <h3>Experiencia y Nivel</h3>
+                        <div class="form-group">
+                            <label>Nivel de experiencia en entrenamiento</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="experience" value="beginner">
+                                    <div>
+                                        <strong>Principiante</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">0-6 meses de experiencia</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="experience" value="intermediate">
+                                    <div>
+                                        <strong>Intermedio</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">6 meses - 2 años</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="experience" value="advanced">
+                                    <div>
+                                        <strong>Avanzado</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">2+ años de experiencia</p>
+                                    </div>
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="training-days">Días disponibles para entrenar por semana</label>
-                        <select id="training-days" name="training-days" class="form-control">
-                            <option value="">Selecciona número de días</option>
-                            <option value="2">2 días</option>
-                            <option value="3">3 días</option>
-                            <option value="4">4 días</option>
-                            <option value="5">5 días</option>
-                            <option value="6">6 días</option>
-                        </select>
+
+                    <div class="form-section">
+                        <h3>Recursos y Disponibilidad</h3>
+                        <div class="form-group">
+                            <label>Equipamiento disponible</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="equipment" value="full-gym">
+                                    <div>
+                                        <strong>Gimnasio completo</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Acceso a máquinas y pesas</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="equipment" value="home-weights">
+                                    <div>
+                                        <strong>Pesas en casa</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Mancuernas, barras, banco</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="equipment" value="minimal">
+                                    <div>
+                                        <strong>Equipo mínimo</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Bandas, peso corporal</p>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="equipment" value="bodyweight">
+                                    <div>
+                                        <strong>Solo peso corporal</strong>
+                                        <p style="font-size: 0.8rem; margin-top: 5px; color: var(--gray-dark);">Sin equipamiento</p>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="training-days">Días disponibles para entrenar por semana</label>
+                            <select id="training-days" name="training-days" class="form-control" required>
+                                <option value="">Selecciona número de días</option>
+                                <option value="2">2 días</option>
+                                <option value="3">3 días</option>
+                                <option value="4">4 días</option>
+                                <option value="5">5 días</option>
+                                <option value="6">6 días</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="session-length">Duración preferida por sesión (minutos)</label>
+                            <div class="range-container">
+                                <input type="range" id="session-length" name="session-length" min="30" max="120" step="15" value="60">
+                                <span class="range-value" id="session-length-value">60 min</span>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Anterior</button>
-                        <button type="button" class="btn btn-primary" onclick="nextStep(5)">Siguiente</button>
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(3)">← Anterior</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(5)">Siguiente →</button>
                     </div>
                 </div>
 
-                <!-- Step 5: Preferencias Finales -->
+                <!-- Step 5: Salud -->
                 <div class="form-step" id="step5">
-                    <h2 style="margin-bottom: var(--space-lg);">Preferencias finales</h2>
-                    
-                    <div class="form-group">
-                        <label for="injuries">Lesiones o condiciones médicas relevantes</label>
-                        <textarea id="injuries" name="injuries" class="form-control" rows="3" placeholder="Ej: lesión de rodilla, hernia discal, etc."></textarea>
+                    <div class="step-header">
+                        <h2>🏥 Historial de Salud</h2>
+                        <p>Información médica relevante para tu seguridad</p>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="sleep">Horas de sueño promedio por noche</label>
-                        <select id="sleep" name="sleep" class="form-control">
-                            <option value="">Selecciona horas de sueño</option>
-                            <option value="5">Menos de 6 horas</option>
-                            <option value="6">6 horas</option>
-                            <option value="7">7 horas</option>
-                            <option value="8">8 horas</option>
-                            <option value="9">9+ horas</option>
-                        </select>
+                    <div class="form-section">
+                        <h3>Condiciones Médicas</h3>
+                        <div class="form-group">
+                            <label for="injuries">Lesiones o condiciones médicas relevantes</label>
+                            <textarea id="injuries" name="injuries" class="form-control" rows="3" placeholder="Ej: lesión de rodilla, hernia discal, diabetes, hipertensión... (dejar en blanco si no hay)"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>¿Estás bajo medicación actualmente?</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
+                                <label class="radio-option">
+                                    <input type="radio" name="medication" value="yes">
+                                    <div>Sí</div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="medication" value="no">
+                                    <div>No</div>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="stress">Nivel de estrés general</label>
-                        <select id="stress" name="stress" class="form-control">
-                            <option value="">Selecciona nivel de estrés</option>
-                            <option value="low">Bajo</option>
-                            <option value="medium">Medio</option>
-                            <option value="high">Alto</option>
-                        </select>
+
+                    <div class="form-section">
+                        <h3>Hábitos de Sueño y Estrés</h3>
+                        <div class="form-group">
+                            <label for="sleep">Horas de sueño promedio por noche</label>
+                            <select id="sleep" name="sleep" class="form-control" required>
+                                <option value="">Selecciona horas de sueño</option>
+                                <option value="5">Menos de 6 horas</option>
+                                <option value="6">6 horas</option>
+                                <option value="7">7 horas</option>
+                                <option value="8">8 horas</option>
+                                <option value="9">9+ horas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="stress">Nivel de estrés general</label>
+                            <select id="stress" name="stress" class="form-control" required>
+                                <option value="">Selecciona nivel de estrés</option>
+                                <option value="low">Bajo (Vida tranquila)</option>
+                                <option value="medium">Medio (Estrés ocasional)</option>
+                                <option value="high">Alto (Estrés constante)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Historial de Ejercicio</h3>
+                        <div class="form-group">
+                            <label>¿Has seguido programas de entrenamiento antes?</label>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
+                                <label class="radio-option">
+                                    <input type="radio" name="previous-programs" value="yes">
+                                    <div>Sí</div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="previous-programs" value="no">
+                                    <div>No</div>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="previous-experience">Si has entrenado antes, describe tu experiencia:</label>
+                            <textarea id="previous-experience" name="previous-experience" class="form-control" rows="3" placeholder="Ej: entrené 3 meses en gym, hice crossfit 1 año, etc."></textarea>
+                        </div>
                     </div>
                     
                     <div class="form-actions">
-                        <button type="button" class="btn btn-secondary" onclick="prevStep(4)">Anterior</button>
-                        <button type="submit" class="btn btn-primary">Crear Mi Plan</button>
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(4)">← Anterior</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep(6)">Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- Step 6: Preferencias Finales -->
+                <div class="form-step" id="step6">
+                    <div class="step-header">
+                        <h2>✨ Preferencias Finales</h2>
+                        <p>Personaliza tu experiencia con nosotros</p>
+                    </div>
+                    
+                    <div class="form-section">
+                        <h3>Estilo de Entrenamiento Preferido</h3>
+                        <div class="form-group">
+                            <label>Selecciona los tipos de entrenamiento que prefieres:</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="training-preferences" value="strength">
+                                    <span>Fuerza (pesas)</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="training-preferences" value="hiit">
+                                    <span>HIIT (alta intensidad)</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="training-preferences" value="cardio">
+                                    <span>Cardio</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="training-preferences" value="yoga">
+                                    <span>Yoga/Movilidad</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="training-preferences" value="calisthenics">
+                                    <span>Calistenia</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="training-preferences" value="sports">
+                                    <span>Deportes</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Comunicación y Seguimiento</h3>
+                        <div class="form-group">
+                            <label>¿Cómo prefieres recibir recordatorios?</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="notifications" value="email">
+                                    <span>Email</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="notifications" value="push">
+                                    <span>Notificaciones push</span>
+                                </label>
+                                <label class="checkbox-option">
+                                    <input type="checkbox" name="notifications" value="sms">
+                                    <span>SMS</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Frecuencia de seguimiento preferida</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="tracking-frequency" value="daily">
+                                    <div>Diario</div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="tracking-frequency" value="weekly">
+                                    <div>Semanal</div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="tracking-frequency" value="biweekly">
+                                    <div>Quincenal</div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3>Compromiso y Motivación</h3>
+                        <div class="form-group">
+                            <label for="motivation-level">Nivel de motivación actual (1-10)</label>
+                            <div class="range-container">
+                                <input type="range" id="motivation-level" name="motivation-level" min="1" max="10" value="7">
+                                <span class="range-value" id="motivation-level-value">7/10</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="challenges">¿Qué crees que será tu mayor desafío?</label>
+                            <textarea id="challenges" name="challenges" class="form-control" rows="3" placeholder="Ej: constancia, alimentación, tiempo, motivación..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep(5)">← Anterior</button>
+                        <button type="submit" class="btn btn-primary">✨ Crear Mi Plan Personalizado</button>
                     </div>
                 </div>
             </form>
         </div>
     </section>
 
+    <!-- Footer CORREGIDO con enlaces en gris claro y efecto hover naranja -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>FitSaaS</h3>
-                    <p>Transformando cuerpos mediante ciencia y tecnología avanzada.</p>
+                    <h3>FitApp</h3>
+                    <p>Plataforma SaaS integral de fitness que combina algoritmos de IA con supervisión humana experta para ofrecer programas altamente personalizados.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                    </div>
                 </div>
+                
                 <div class="footer-section">
-                    <h3>Enlaces</h3>
+                    <h3>Enlaces Rápidos</h3>
                     <ul>
                         <li><a href="index.html">Inicio</a></li>
                         <li><a href="services.html">Servicios</a></li>
                         <li><a href="pricing.html">Precios</a></li>
+                        <li><a href="onboarding.html">Registro</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="privacy.html">Privacidad</a></li>
-                        <li><a href="terms.html">Términos</a></li>
+                        <li><a href="privacy.html">Política de Privacidad</a></li>
+                        <li><a href="terms.html">Términos de Servicio</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
                     </ul>
                 </div>
+                
                 <div class="footer-section">
                     <h3>Contacto</h3>
                     <ul>
                         <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
-                        <li><a href="contact.html">Formulario</a></li>
+                        <li><a href="tel:+34123456789">+34 123 456 789</a></li>
+                        <li><a href="contact.html">Formulario de Contacto</a></li>
                     </ul>
                 </div>
             </div>
+            
             <div class="copyright">
                 <p>&copy; 2023 FitApp. Todos los derechos reservados.</p>
             </div>
@@ -625,7 +1158,7 @@
 
     <script>
         let currentStep = 1;
-        const totalSteps = 5;
+        const totalSteps = 6;
         
         function updateProgress() {
             const progress = (currentStep / totalSteps) * 100;
@@ -650,6 +1183,7 @@
                 currentStep = next;
                 showStep(currentStep);
                 updateProgress();
+                window.scrollTo(0, 0);
             }
         }
         
@@ -657,11 +1191,29 @@
             currentStep = prev;
             showStep(currentStep);
             updateProgress();
+            window.scrollTo(0, 0);
         }
         
         function validateStep(step) {
             // Basic validation - expand based on requirements
-            return true;
+            const currentStepElement = document.getElementById(`step${step}`);
+            const requiredInputs = currentStepElement.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredInputs.forEach(input => {
+                if (!input.value) {
+                    isValid = false;
+                    input.style.borderColor = '#ff4444';
+                } else {
+                    input.style.borderColor = '';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Por favor, completa todos los campos requeridos antes de continuar.');
+            }
+            
+            return isValid;
         }
         
         function updateRadioOptions() {
@@ -673,28 +1225,58 @@
                     option.classList.remove('selected');
                 }
             });
+            
+            document.querySelectorAll('.checkbox-option').forEach(option => {
+                const checkbox = option.querySelector('input[type="checkbox"]');
+                if (checkbox.checked) {
+                    option.classList.add('selected');
+                } else {
+                    option.classList.remove('selected');
+                }
+            });
         }
         
-        // Initialize radio option styling
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             updateProgress();
             updateRadioOptions();
             
             // Add click handlers for radio options
-            document.querySelectorAll('.radio-option').forEach(option => {
+            document.querySelectorAll('.radio-option, .checkbox-option').forEach(option => {
                 option.addEventListener('click', function() {
-                    const radio = this.querySelector('input[type="radio"]');
-                    radio.checked = true;
+                    const input = this.querySelector('input[type="radio"], input[type="checkbox"]');
+                    if (input.type === 'radio') {
+                        input.checked = true;
+                    } else {
+                        input.checked = !input.checked;
+                    }
                     updateRadioOptions();
                 });
+            });
+            
+            // Range input updates
+            document.getElementById('session-length').addEventListener('input', function() {
+                document.getElementById('session-length-value').textContent = this.value + ' min';
+            });
+            
+            document.getElementById('motivation-level').addEventListener('input', function() {
+                document.getElementById('motivation-level-value').textContent = this.value + '/10';
             });
             
             // Form submission
             document.getElementById('onboardingForm').addEventListener('submit', function(e) {
                 e.preventDefault();
-                // Here you would typically send the data to your backend
-                alert('¡Formulario completado! Redirigiendo a tu dashboard...');
-                window.location.href = 'dashboard.html';
+                if (validateStep(currentStep)) {
+                    // Here you would typically send the data to your backend
+                    const formData = new FormData(this);
+                    const data = Object.fromEntries(formData);
+                    
+                    console.log('Form data:', data);
+                    
+                    // Show success message
+                    alert('¡Evaluación completada con éxito! 🎉\n\nEstamos creando tu plan personalizado...');
+                    window.location.href = 'dashboard.html';
+                }
             });
         });
     </script>
