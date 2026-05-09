@@ -1,539 +1,295 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitApp - Servicios</title>
-    <meta name="description" content="Descubre nuestros servicios completos de fitness: entrenamiento personalizado, planes nutricionales y asesoría en suplementación basada en ciencia.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        /* Reutilizando las variables CSS del index */
-        :root {
-            --black-primary: #000000;
-            --black-secondary: #0f0f0f;
-            --black-tertiary: #1a1a1a;
-            --orange-primary: #FF6A00;
-            --orange-secondary: #FF944D;
-            --orange-gradient: linear-gradient(135deg, #FF6A00 0%, #FF944D 100%);
-            --white: #ffffff;
-            --gray-light: #f8f9fa;
-            --gray-medium: #e9ecef;
-            --gray-dark: #495057;
-            --gray-darker: #343a40;
-            
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2.5rem;
-            --space-xl: 4rem;
-            --space-xxl: 6rem;
-            
-            --border-radius-sm: 4px;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --border-radius-xl: 20px;
-            
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
-            
-            --transition-fast: 0.2s ease;
-            --transition-normal: 0.3s ease;
-            --transition-slow: 0.5s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-body);
-            color: var(--black-primary);
-            line-height: 1.7;
-            background-color: var(--white);
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-        
-        /* Header - Mismo estilo que index */
-        header {
-            background-color: var(--white);
-            padding: var(--space-sm) 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: var(--font-heading);
-            font-weight: 800;
-            font-size: 1.75rem;
-            color: var(--black-primary);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--orange-primary);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav li {
-            margin-left: var(--space-lg);
-        }
-        
-        nav a {
-            color: var(--black-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition-fast);
-        }
-        
-        nav a:hover {
-            color: var(--orange-primary);
-        }
-        
-        .cta-button {
-            background: var(--orange-gradient);
-            color: var(--white);
-            border: none;
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--border-radius);
-            font-family: var(--font-body);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FITAPP — Servicios</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root { --black:#0a0a0a;--dark:#111111;--card:#161616;--orange:#FF5500;--orange-bright:#FF7A00;--orange-glow:rgba(255,85,0,0.3);--white:#FFFFFF;--gray:#888888;--gray-light:#cccccc; }
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:none;}
+  .cursor{width:12px;height:12px;background:var(--orange);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
+  .cursor-ring{width:36px;height:36px;border:1.5px solid var(--orange);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;opacity:.6;}
+  nav{position:fixed;top:0;width:100%;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,10,10,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,85,0,0.15);}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;color:var(--white);text-decoration:none;}.logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:32px;list-style:none;}.nav-links a{color:var(--gray-light);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--orange);}
+  .nav-pro-btn{background:var(--orange);color:var(--white)!important;padding:8px 22px;border-radius:4px;font-weight:700!important;}
 
-        /* Page Header */
-        .page-header {
-            background: var(--black-primary);
-            color: var(--white);
-            padding: var(--space-xl) 0;
-            text-align: center;
-        }
-        
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: var(--space-md);
-            color: var(--white);
-        }
-        
-        .page-header p {
-            font-size: 1.2rem;
-            color: var(--gray-medium);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+  /* PAGE HERO */
+  .page-hero{min-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:80px;}
+  .hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,85,0,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,85,0,0.07) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
+  @keyframes gridMove{0%{background-position:0 0}100%{background-position:60px 60px}}
+  .hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(255,85,0,0.12) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.8}50%{transform:translate(-50%,-50%) scale(1.15);opacity:1}}
+  .page-hero-content{position:relative;z-index:2;text-align:center;padding:60px 24px 40px;}
+  .hero-badge{display:inline-block;background:rgba(255,85,0,0.15);border:1px solid rgba(255,85,0,0.4);color:var(--orange);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;border-radius:100px;margin-bottom:24px;animation:fadeUp .8s ease both;}
+  .page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,9vw,7rem);line-height:.95;letter-spacing:5px;animation:fadeUp .8s .15s ease both;}
+  .page-hero-title span{color:var(--orange);}
+  .page-hero-sub{font-size:1rem;font-weight:300;color:var(--gray-light);margin-top:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7;animation:fadeUp .8s .3s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-        /* Services Detail */
-        .services-detail {
-            padding: var(--space-xxl) 0;
-        }
-        
-        .service-hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-            align-items: center;
-            margin-bottom: var(--space-xxl);
-        }
-        
-        .service-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: var(--space-md);
-        }
-        
-        .service-image {
-            height: 400px;
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .service-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform var(--transition-slow);
-        }
-        
-        .service-image:hover img {
-            transform: scale(1.05);
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
-            margin: var(--space-xl) 0;
-        }
-        
-        .feature-card {
-            background: var(--white);
-            padding: var(--space-lg);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-md);
-            border-left: 4px solid var(--orange-primary);
-            transition: transform var(--transition-normal);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        /* Process Section */
-        .process {
-            background: var(--gray-light);
-            padding: var(--space-xxl) 0;
-        }
-        
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-lg);
-            margin-top: var(--space-xl);
-        }
-        
-        .process-step {
-            text-align: center;
-            padding: var(--space-lg);
-        }
-        
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--orange-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--space-md);
-            color: var(--white);
-            font-size: 1.5rem;
-        }
+  .section-wrap{max-width:1300px;margin:0 auto;padding:100px 48px;}
+  .section-tag{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;display:block;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1;letter-spacing:3px;margin-bottom:16px;}
+  .section-title span{color:var(--orange);}
+  .section-desc{color:var(--gray-light);font-size:1rem;font-weight:300;max-width:560px;line-height:1.8;margin-bottom:56px;}
 
-        /* Footer - CORREGIDO con enlaces en blanco y efecto hover naranja */
-        footer {
-            background-color: var(--black-primary);
-            color: var(--white);
-            padding: var(--space-xxl) 0 var(--space-lg);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-        
-        .footer-section h3 {
-            color: var(--white);
-            margin-bottom: var(--space-md);
-            font-size: 1.2rem;
-        }
-        
-        .footer-section p {
-            color: var(--gray-medium);
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section li {
-            margin-bottom: var(--space-sm);
-        }
-        
-        /* CORRECCIÓN: Enlaces en blanco con hover naranja */
-        .footer-section a {
-            color: var(--gray-medium); /* Color gris claro como en el original */
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-        
-        .footer-section a:hover {
-            color: var(--orange-primary); /* Color naranja al hacer hover */
-        }
-        
-        .social-links {
-            display: flex;
-            gap: var(--space-md);
-            margin-top: var(--space-md);
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--black-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-        }
-        
-        .social-link:hover {
-            background: var(--orange-primary);
-            transform: translateY(-2px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: var(--space-lg);
-            border-top: 1px solid var(--black-secondary);
-            color: var(--gray-medium);
-            font-size: 0.9rem;
-        }
+  /* SERVICE HERO */
+  .service-hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:80px;padding-bottom:80px;border-bottom:1px solid rgba(255,255,255,0.06);}
+  .service-hero:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  @media(max-width:768px){.service-hero{grid-template-columns:1fr;}.service-hero.reverse .service-content{order:1;}.service-hero.reverse .service-img{order:2;}}
+  .service-content h2{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:3px;margin-bottom:16px;}
+  .service-content h2 span{color:var(--orange);}
+  .service-content>p{color:var(--gray-light);font-size:.95rem;line-height:1.8;margin-bottom:32px;}
+  .features-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:32px;}
+  .feature-card{background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:20px 18px;transition:border-color .2s;}
+  .feature-card:hover{border-color:rgba(255,85,0,0.3);}
+  .feature-card h3{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1.5px;margin-bottom:8px;}
+  .feature-card p{color:var(--gray);font-size:.84rem;line-height:1.6;}
+  .service-img{background:var(--dark);border:1px solid rgba(255,85,0,0.2);border-radius:16px;overflow:hidden;min-height:320px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .service-img img{width:100%;height:100%;object-fit:cover;opacity:.7;}
+  .service-img-placeholder{display:flex;flex-direction:column;align-items:center;gap:16px;}
+  .service-img-placeholder .big-icon{font-size:5rem;animation:float 3s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .service-img-placeholder p{color:var(--gray);font-size:.9rem;letter-spacing:1px;}
 
-        @media (max-width: 1024px) {
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: var(--space-lg);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .service-hero {
-                grid-template-columns: 1fr;
-            }
-            
-            .service-image {
-                height: 300px;
-                order: -1;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: var(--space-lg);
-            }
-        }
-    </style>
+  /* PROCESS */
+  .process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  @media(max-width:900px){.process-steps{grid-template-columns:1fr 1fr;}}
+  @media(max-width:500px){.process-steps{grid-template-columns:1fr;}}
+  .process-step{background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:32px 24px;text-align:center;transition:all .25s;position:relative;overflow:hidden;}
+  .process-step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+  .process-step:hover::before{transform:scaleX(1);}
+  .process-step:hover{transform:translateY(-4px);border-color:rgba(255,85,0,0.3);}
+  .step-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(255,85,0,0.15);line-height:1;margin-bottom:8px;}
+  .step-icon{font-size:2rem;margin-bottom:14px;display:block;}
+  .process-step h3{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;margin-bottom:10px;}
+  .process-step p{color:var(--gray);font-size:.86rem;line-height:1.6;}
+
+  /* SECTION ALT */
+  .section-alt{background:linear-gradient(to bottom,transparent,rgba(255,85,0,0.03),transparent);}
+
+  /* CTA */
+  .cta-section{background:linear-gradient(135deg,var(--dark),var(--black));border-top:1px solid rgba(255,85,0,0.15);border-bottom:1px solid rgba(255,85,0,0.15);text-align:center;padding:100px 48px;}
+  .btn-primary{background:var(--orange);color:var(--white);border:none;padding:16px 40px;font-family:'Barlow',sans-serif;font-size:1rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:all .25s;text-decoration:none;display:inline-block;}
+  .btn-primary:hover{background:var(--orange-bright);transform:translateY(-2px);box-shadow:0 12px 40px var(--orange-glow);}
+  .btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:16px 40px;font-family:'Barlow',sans-serif;font-size:1rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:all .25s;text-decoration:none;display:inline-block;}
+  .btn-secondary:hover{border-color:var(--orange);color:var(--orange);}
+
+  /* FOOTER */
+  footer{background:var(--dark);border-top:1px solid rgba(255,255,255,0.07);padding:60px 48px 32px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1300px;margin:0 auto 40px;}
+  @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}nav{padding:16px 20px;}.nav-links{display:none;}.section-wrap{padding:80px 20px;}.cta-section{padding:80px 20px;}footer{padding:60px 20px 32px;}}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;color:var(--white);margin-bottom:12px;}.footer-logo span{color:var(--orange);}
+  .footer-desc{color:var(--gray);font-size:.88rem;line-height:1.7;margin-bottom:20px;}
+  .footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;margin-bottom:16px;}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-col ul a{color:var(--gray);text-decoration:none;font-size:.85rem;transition:color .2s;}
+  .footer-col ul a:hover{color:var(--orange);}
+  .footer-copy{color:rgba(255,255,255,0.2);font-size:.78rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;text-align:center;max-width:1300px;margin:0 auto;}
+  ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <a href="index.html" class="logo">Fit<span>App</span></a>
-            <nav>
-                <ul>
-                    <li><a href="services.html">Servicios</a></li>
-                    <li><a href="pricing.html">Precios</a></li>
-                    <li><a href="about.html">Nosotros</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
-                </ul>
-            </nav>
-            <a href="onboarding.html" class="cta-button">Comenzar Ahora</a>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<nav>
+  <a href="inicio.html" class="logo">FIT<span>APP</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html" class="active">Servicios</a></li>
+    <li><a href="pricing.html">Precios</a></li>
+    <li><a href="about.html">Nosotros</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html">Contacto</a></li>
+    <li><a href="onboarding.html" class="nav-pro-btn">Empezar 🔥</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="page-hero-content">
+    <span class="hero-badge">⚡ Suite completa</span>
+    <h1 class="page-hero-title">NUESTROS <span>SERVICIOS</span></h1>
+    <p class="page-hero-sub">Una suite completa de herramientas y servicios diseñados para maximizar tus resultados fitness.</p>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section-wrap">
+  <span class="section-tag">💪 Entrenamiento</span>
+  <h2 class="section-title">ENTRENAMIENTO <span>PERSONALIZADO</span></h2>
+  <p class="section-desc">Programas de ejercicio diseñados para tus objetivos, nivel de experiencia y equipamiento disponible. Tu plan evoluciona contigo en tiempo real.</p>
+
+  <div class="service-hero reveal">
+    <div class="service-content">
+      <h2>Rutinas que <span>evolucionan</span> contigo</h2>
+      <p>Nuestro sistema adapta tu plan semana a semana según tu progreso, feedback y recuperación. Nunca te estancarás de nuevo.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Adaptación continua</h3>
+          <p>El plan se ajusta automáticamente según tu progreso y feedback.</p>
         </div>
-    </header>
-
-    <section class="page-header">
-        <div class="container">
-            <h1>Nuestros Servicios</h1>
-            <p>Una suite completa de herramientas y servicios diseñados para maximizar tus resultados fitness</p>
+        <div class="feature-card">
+          <h3>Técnica perfecta</h3>
+          <p>Guías detalladas para ejecutar cada ejercicio de forma segura.</p>
         </div>
-    </section>
-
-    <section class="services-detail">
-        <div class="container">
-            <!-- Entrenamiento Personalizado -->
-            <div class="service-hero">
-                <div class="service-content">
-                    <h2>Entrenamiento Personalizado</h2>
-                    <p>Programas de ejercicio diseñados específicamente para tus objetivos, nivel de experiencia y equipamiento disponible. Nuestro sistema se adapta a tu progreso en tiempo real.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <h3>Adaptación Continua</h3>
-                            <p>Tu plan evoluciona contigo, ajustándose automáticamente según tu progreso y feedback</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Técnica Perfecta</h3>
-                            <p>Videos demostrativos y guías detalladas para ejecutar cada ejercicio con la forma correcta</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Variedad de Enfoques</h3>
-                            <p>Desde hipertrofia hasta fuerza máxima, pasando por resistencia y acondicionamiento</p>
-                        </div>
-                    </div>
-                    
-                    <a href="onboarding.html" class="cta-button">Comenzar Entrenamiento</a>
-                </div>
-                <div class="service-image">
-                    <img src="https://i.imgur.com/s3VVO1Q.png" alt="Entrenamiento personalizado - Ejercicios y rutinas adaptadas" loading="lazy">
-                </div>
-            </div>
-
-            <!-- Nutrición -->
-            <div class="service-hero">
-                <div class="service-image">
-                    <img src="https://i.imgur.com/JH9oHU2.png" alt="Nutrición de precisión - Planes alimenticios personalizados" loading="lazy">
-                </div>
-                <div class="service-content">
-                    <h2>Nutrición de Precisión</h2>
-                    <p>Planes alimenticios completamente personalizados que consideran tus preferencias, alergias, horarios y objetivos específicos de composición corporal.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <h3>Planificación de Comidas</h3>
-                            <p>Recetas específicas, listas de compra automáticas y preparación semanal organizada</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Ajuste de Macronutrientes</h3>
-                            <p>Distribución precisa de proteínas, carbohidratos y grasas según tu metabolismo y objetivos</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Flexibilidad Alimentaria</h3>
-                            <p>Adaptación a cualquier estilo de alimentación: omnívoro, vegetariano, vegano, etc.</p>
-                        </div>
-                    </div>
-                    
-                    <a href="onboarding.html" class="cta-button">Optimizar Mi Nutrición</a>
-                </div>
-            </div>
-
-            <!-- Suplementación -->
-            <div class="service-hero">
-                <div class="service-content">
-                    <h2>Asesoría en Suplementación</h2>
-                    <p>Recomendaciones basadas en evidencia científica para optimizar tu rendimiento y resultados, evitando gastos innecesarios en productos inefectivos.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <h3>Análisis Científico</h3>
-                            <p>Evaluación de estudios y eficacia real de cada suplemento para tus objetivos específicos</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Protocolos de Uso</h3>
-                            <p>Dosificación precisa, timing de consumo y ciclos de suplementación cuando sea necesario</p>
-                        </div>
-                        <div class="feature-card">
-                            <h3>Control de Calidad</h3>
-                            <p>Recomendación de marcas verificadas y análisis de pureza de productos</p>
-                        </div>
-                    </div>
-                    
-                    <a href="onboarding.html" class="cta-button">Evaluar Mi Suplementación</a>
-                </div>
-                <div class="service-image">
-                    <img src="https://i.imgur.com/Abjh6Xz.png" alt="Asesoría en suplementación - Productos basados en evidencia científica" loading="lazy">
-                </div>
-            </div>
+        <div class="feature-card">
+          <h3>Variedad de enfoques</h3>
+          <p>Desde hipertrofia hasta fuerza máxima y acondicionamiento.</p>
         </div>
-    </section>
-
-    <section class="process">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: var(--space-md);">Cómo Funciona Nuestro Proceso</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-xl); color: var(--gray-dark);">
-                Un sistema probado que garantiza resultados medibles y sostenibles
-            </p>
-            
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-icon">📋</div>
-                    <h3>Evaluación Completa</h3>
-                    <p>Análisis detallado de tu situación actual, objetivos y preferencias</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon">🎯</div>
-                    <h3>Plan Personalizado</h3>
-                    <p>Creación de tu programa único de entrenamiento y nutrición</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon">📱</div>
-                    <h3>Implementación</h3>
-                    <p>Acceso a tu dashboard y comienzo del programa guiado</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-icon">📊</div>
-                    <h3>Seguimiento y Ajustes</h3>
-                    <p>Monitorización continua y optimización del plan</p>
-                </div>
-            </div>
+        <div class="feature-card">
+          <h3>Sobrecarga progresiva</h3>
+          <p>El sistema calcula los aumentos ideales para seguir creciendo.</p>
         </div>
-    </section>
+      </div>
+      <a href="onboarding.html" class="btn-primary">Comenzar entrenamiento</a>
+    </div>
+    <div class="service-img">
+      <div class="service-img-placeholder">
+        <span class="big-icon">🏋️</span>
+        <p>Entrenamiento personalizado</p>
+      </div>
+    </div>
+  </div>
 
-    <!-- Footer CORREGIDO con enlaces en blanco y efecto hover naranja -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>FitApp</h3>
-                    <p>Plataforma SaaS integral de fitness que combina algoritmos de IA con supervisión humana experta para ofrecer programas altamente personalizados.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">📱</a>
-                        <a href="#" class="social-link">📘</a>
-                        <a href="#" class="social-link">📷</a>
-                        <a href="#" class="social-link">🐦</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="services.html">Servicios</a></li>
-                        <li><a href="pricing.html">Precios</a></li>
-                        <li><a href="onboarding.html">Registro</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="privacy.html">Política de Privacidad</a></li>
-                        <li><a href="terms.html">Términos de Servicio</a></li>
-                        <li><a href="cookies.html">Cookies</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
-                        <li><a href="tel:+34123456789">+34 123 456 789</a></li>
-                        <li><a href="contact.html">Formulario de Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 FitApp. Todos los derechos reservados.</p>
-            </div>
+  <div class="service-hero reveal">
+    <div class="service-img">
+      <div class="service-img-placeholder">
+        <span class="big-icon">🥗</span>
+        <p>Nutrición de precisión</p>
+      </div>
+    </div>
+    <div class="service-content">
+      <h2>Nutrición de <span>Precisión</span></h2>
+      <p>Planes alimenticios completamente personalizados que consideran tus preferencias, alergias, horarios y objetivos específicos de composición corporal.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Planificación de comidas</h3>
+          <p>Recetas específicas y lista de la compra automática.</p>
         </div>
-    </footer>
+        <div class="feature-card">
+          <h3>Ajuste de macros</h3>
+          <p>Distribución precisa de proteínas, carbos y grasas.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Flexibilidad alimentaria</h3>
+          <p>Adaptación a cualquier estilo: omnívoro, vegano, etc.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Ciclado de calorías</h3>
+          <p>Estrategias avanzadas para optimizar composición corporal.</p>
+        </div>
+      </div>
+      <a href="onboarding.html" class="btn-primary">Optimizar mi nutrición</a>
+    </div>
+  </div>
+
+  <div class="service-hero reveal">
+    <div class="service-content">
+      <h2>Suplementación basada en <span>evidencia</span></h2>
+      <p>Recomendaciones científicas para optimizar tu rendimiento y resultados, evitando gastos innecesarios en productos inefectivos.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <h3>Análisis científico</h3>
+          <p>Evaluación de la eficacia real de cada suplemento.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Protocolos de uso</h3>
+          <p>Dosificación precisa y timing de consumo óptimo.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Control de calidad</h3>
+          <p>Solo marcas verificadas con pureza garantizada.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Sin gastos innecesarios</h3>
+          <p>Te decimos qué NO comprar para ahorrar dinero.</p>
+        </div>
+      </div>
+      <a href="onboarding.html" class="btn-primary">Evaluar mi suplementación</a>
+    </div>
+    <div class="service-img">
+      <div class="service-img-placeholder">
+        <span class="big-icon">🔬</span>
+        <p>Suplementación con ciencia</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<div class="section-alt">
+  <div class="section-wrap">
+    <span class="section-tag">🔄 Proceso</span>
+    <h2 class="section-title">CÓMO <span>FUNCIONA</span></h2>
+    <p class="section-desc">Un sistema probado que garantiza resultados medibles y sostenibles en 4 pasos simples.</p>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <span class="step-icon">📋</span>
+        <h3>Evaluación completa</h3>
+        <p>Análisis detallado de tu situación actual, objetivos y preferencias personales.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">02</div>
+        <span class="step-icon">🎯</span>
+        <h3>Plan personalizado</h3>
+        <p>Creación de tu programa único de entrenamiento y nutrición por IA + expertos.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">03</div>
+        <span class="step-icon">📱</span>
+        <h3>Implementación</h3>
+        <p>Acceso a tu dashboard y comienzo del programa guiado día a día.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <span class="step-icon">📊</span>
+        <h3>Seguimiento y ajustes</h3>
+        <p>Monitorización continua y optimización del plan según tus datos reales.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <span class="section-tag" style="justify-content:center;display:flex;margin-bottom:16px;">🚀 Empieza hoy</span>
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:4px;margin-bottom:16px;">TRANSFORMA TU <span style="color:var(--orange)">CUERPO</span></h2>
+  <p style="color:var(--gray-light);max-width:480px;margin:0 auto 40px;line-height:1.7;">Comienza tu evaluación gratuita y recibe un plan 100% personalizado en minutos.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="onboarding.html" class="btn-primary">🔥 Comenzar Gratis</a>
+    <a href="pricing.html" class="btn-secondary">Ver Precios</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">FIT<span>APP</span></div>
+      <p class="footer-desc">Plataforma de fitness que combina IA con supervisión humana experta para programas altamente personalizados.</p>
+    </div>
+    <div class="footer-col"><h4>Navegación</h4><ul><li><a href="inicio.html">Inicio</a></li><li><a href="services.html">Servicios</a></li><li><a href="pricing.html">Precios</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacidad</a></li><li><a href="#">Términos</a></li><li><a href="#">Cookies</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="mailto:hola@fitapp.com">hola@fitapp.com</a></li><li><a href="tel:+34123456789">+34 123 456 789</a></li><li><a href="contact.html">Formulario</a></li></ul></div>
+  </div>
+  <p class="footer-copy">© 2025 FITAPP. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);});
+document.querySelectorAll('button,a,.feature-card,.process-step').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';});el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px';});});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
