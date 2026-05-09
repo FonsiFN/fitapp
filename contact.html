@@ -1,567 +1,258 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitApp - Contacto</title>
-    <meta name="description" content="¿Tienes preguntas? Contáctanos. Nuestro equipo está aquí para ayudarte en tu journey fitness.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --black-primary: #000000;
-            --black-secondary: #0f0f0f;
-            --black-tertiary: #1a1a1a;
-            --orange-primary: #FF6A00;
-            --orange-secondary: #FF944D;
-            --orange-gradient: linear-gradient(135deg, #FF6A00 0%, #FF944D 100%);
-            --white: #ffffff;
-            --gray-light: #f8f9fa;
-            --gray-medium: #e9ecef;
-            --gray-dark: #495057;
-            --gray-darker: #343a40;
-            
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2.5rem;
-            --space-xl: 4rem;
-            --space-xxl: 6rem;
-            
-            --border-radius-sm: 4px;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --border-radius-xl: 20px;
-            
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
-            
-            --transition-fast: 0.2s ease;
-            --transition-normal: 0.3s ease;
-            --transition-slow: 0.5s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-body);
-            color: var(--black-primary);
-            line-height: 1.7;
-            background-color: var(--white);
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-        
-        /* Header */
-        header {
-            background-color: var(--white);
-            padding: var(--space-sm) 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: var(--font-heading);
-            font-weight: 800;
-            font-size: 1.75rem;
-            color: var(--black-primary);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--orange-primary);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav li {
-            margin-left: var(--space-lg);
-        }
-        
-        nav a {
-            color: var(--black-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition-fast);
-        }
-        
-        nav a:hover {
-            color: var(--orange-primary);
-        }
-        
-        .cta-button {
-            background: var(--orange-gradient);
-            color: var(--white);
-            border: none;
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--border-radius);
-            font-family: var(--font-body);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FITAPP — Contacto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--dark:#111111;--card:#161616;--orange:#FF5500;--orange-bright:#FF7A00;--orange-glow:rgba(255,85,0,0.3);--white:#FFFFFF;--gray:#888888;--gray-light:#cccccc;}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:none;}
+  .cursor{width:12px;height:12px;background:var(--orange);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
+  .cursor-ring{width:36px;height:36px;border:1.5px solid var(--orange);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;opacity:.6;}
+  nav{position:fixed;top:0;width:100%;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,10,10,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,85,0,0.15);}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;color:var(--white);text-decoration:none;}.logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:32px;list-style:none;}.nav-links a{color:var(--gray-light);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--orange);}
+  .nav-pro-btn{background:var(--orange);color:var(--white)!important;padding:8px 22px;border-radius:4px;font-weight:700!important;}
+  .page-hero{min-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:80px;}
+  .hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,85,0,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,85,0,0.07) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
+  @keyframes gridMove{0%{background-position:0 0}100%{background-position:60px 60px}}
+  .hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(255,85,0,0.12) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.8}50%{transform:translate(-50%,-50%) scale(1.15);opacity:1}}
+  .page-hero-content{position:relative;z-index:2;text-align:center;padding:60px 24px 40px;}
+  .hero-badge{display:inline-block;background:rgba(255,85,0,0.15);border:1px solid rgba(255,85,0,0.4);color:var(--orange);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;border-radius:100px;margin-bottom:24px;animation:fadeUp .8s ease both;}
+  .page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,9vw,7rem);line-height:.95;letter-spacing:5px;animation:fadeUp .8s .15s ease both;}
+  .page-hero-title span{color:var(--orange);}
+  .page-hero-sub{font-size:1rem;font-weight:300;color:var(--gray-light);margin-top:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7;animation:fadeUp .8s .3s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .section-wrap{max-width:1300px;margin:0 auto;padding:100px 48px;}
+  .section-tag{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:12px;display:block;}
+  .section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);line-height:1;letter-spacing:3px;margin-bottom:16px;}
+  .section-title span{color:var(--orange);}
+  .section-desc{color:var(--gray-light);font-size:1rem;font-weight:300;max-width:560px;line-height:1.8;margin-bottom:56px;}
 
-        /* Page Header */
-        .page-header {
-            background: var(--black-primary);
-            color: var(--white);
-            padding: var(--space-xl) 0;
-            text-align: center;
-        }
-        
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: var(--space-md);
-            color: var(--white);
-        }
-        
-        .page-header p {
-            font-size: 1.2rem;
-            color: var(--gray-medium);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+  /* CONTACT GRID */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start;}
+  @media(max-width:768px){.contact-grid{grid-template-columns:1fr;}}
 
-        /* Contact Section */
-        .contact {
-            padding: var(--space-xxl) 0;
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-xl);
-        }
-        
-        .contact-info {
-            background: var(--gray-light);
-            padding: var(--space-xl);
-            border-radius: var(--border-radius-lg);
-        }
-        
-        .contact-methods {
-            margin-top: var(--space-lg);
-        }
-        
-        .contact-method {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: var(--space-lg);
-        }
-        
-        .method-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--orange-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: var(--space-md);
-            color: var(--white);
-            flex-shrink: 0;
-        }
-        
-        .contact-form {
-            background: var(--white);
-            padding: var(--space-xl);
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .form-group {
-            margin-bottom: var(--space-lg);
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: var(--space-sm);
-            font-weight: 500;
-            color: var(--black-primary);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: var(--space-sm);
-            border: 1px solid var(--gray-medium);
-            border-radius: var(--border-radius);
-            font-family: var(--font-body);
-            font-size: 1rem;
-            transition: border-color var(--transition-fast);
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--orange-primary);
-        }
-        
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .btn-submit {
-            background: var(--orange-gradient);
-            color: var(--white);
-            border: none;
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--border-radius);
-            font-family: var(--font-body);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            width: 100%;
-        }
-        
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
+  /* CONTACT METHODS */
+  .contact-method{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px 22px;margin-bottom:14px;transition:border-color .2s;cursor:pointer;}
+  .contact-method:hover{border-color:rgba(255,85,0,0.3);}
+  .method-icon{width:52px;height:52px;background:rgba(255,85,0,0.12);border:1px solid rgba(255,85,0,0.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+  .method-info h3{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:1.5px;margin-bottom:4px;}
+  .method-info p{color:var(--orange);font-size:.9rem;font-weight:600;margin-bottom:2px;}
+  .method-info span{color:var(--gray);font-size:.82rem;}
 
-        /* FAQ Section */
-        .faq-contact {
-            padding: var(--space-xxl) 0;
-            background: var(--gray-light);
-        }
-        
-        .faq-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: var(--space-lg);
-            margin-top: var(--space-xl);
-        }
-        
-        .faq-item {
-            background: var(--white);
-            border-radius: var(--border-radius);
-            padding: var(--space-lg);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .faq-question {
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-            color: var(--black-primary);
-        }
+  /* FORM */
+  .form-card{background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:40px 36px;}
+  .form-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;margin-bottom:28px;}
+  .form-title span{color:var(--orange);}
+  .form-group{margin-bottom:20px;}
+  .form-group label{display:block;font-size:.82rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray-light);margin-bottom:8px;}
+  .form-control{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:'Barlow',sans-serif;font-size:.9rem;padding:14px 16px;border-radius:8px;outline:none;transition:border-color .2s;}
+  .form-control::placeholder{color:var(--gray);}
+  .form-control:focus{border-color:rgba(255,85,0,0.5);background:rgba(255,85,0,0.04);}
+  textarea.form-control{resize:vertical;min-height:120px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:500px){.form-row{grid-template-columns:1fr;}}
+  .btn-submit{width:100%;background:var(--orange);color:var(--white);border:none;padding:16px;font-family:'Barlow',sans-serif;font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;border-radius:8px;cursor:pointer;transition:all .25s;margin-top:8px;}
+  .btn-submit:hover{background:var(--orange-bright);box-shadow:0 12px 40px var(--orange-glow);transform:translateY(-2px);}
 
-        /* Footer - CORREGIDO con enlaces en gris claro y efecto hover naranja */
-        footer {
-            background-color: var(--black-primary);
-            color: var(--white);
-            padding: var(--space-xxl) 0 var(--space-lg);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-        
-        .footer-section h3 {
-            color: var(--white);
-            margin-bottom: var(--space-md);
-            font-size: 1.2rem;
-        }
-        
-        .footer-section p {
-            color: var(--gray-medium);
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section li {
-            margin-bottom: var(--space-sm);
-        }
-        
-        /* CORRECCIÓN: Enlaces en gris claro con hover naranja */
-        .footer-section a {
-            color: var(--gray-medium); /* Color gris claro como en el original */
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-        
-        .footer-section a:hover {
-            color: var(--orange-primary); /* Color naranja al hacer hover */
-        }
-        
-        .social-links {
-            display: flex;
-            gap: var(--space-md);
-            margin-top: var(--space-md);
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--black-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-        }
-        
-        .social-link:hover {
-            background: var(--orange-primary);
-            transform: translateY(-2px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: var(--space-lg);
-            border-top: 1px solid var(--black-secondary);
-            color: var(--gray-medium);
-            font-size: 0.9rem;
-        }
+  /* SUCCESS */
+  .form-success{display:none;text-align:center;padding:40px;background:rgba(255,85,0,0.06);border:1px solid rgba(255,85,0,0.2);border-radius:12px;margin-top:16px;}
+  .form-success .big{font-size:3rem;margin-bottom:12px;}
+  .form-success h3{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:2px;margin-bottom:8px;}
+  .form-success p{color:var(--gray-light);font-size:.9rem;}
 
-        @media (max-width: 1024px) {
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: var(--space-lg);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .faq-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: var(--space-lg);
-            }
-        }
-    </style>
+  /* FAQ */
+  .section-alt{background:linear-gradient(to bottom,transparent,rgba(255,85,0,0.03),transparent);}
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:700px){.faq-grid{grid-template-columns:1fr;}}
+  .faq-item{background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:28px 24px;transition:border-color .2s;}
+  .faq-item:hover{border-color:rgba(255,85,0,0.25);}
+  .faq-q{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;margin-bottom:10px;}
+  .faq-a{color:var(--gray);font-size:.88rem;line-height:1.7;}
+
+  footer{background:var(--dark);border-top:1px solid rgba(255,255,255,0.07);padding:60px 48px 32px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1300px;margin:0 auto 40px;}
+  @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}nav{padding:16px 20px;}.nav-links{display:none;}.section-wrap{padding:80px 20px;}footer{padding:60px 20px 32px;}}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;color:var(--white);margin-bottom:12px;}.footer-logo span{color:var(--orange);}
+  .footer-desc{color:var(--gray);font-size:.88rem;line-height:1.7;}
+  .footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;margin-bottom:16px;}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-col ul a{color:var(--gray);text-decoration:none;font-size:.85rem;transition:color .2s;}
+  .footer-col ul a:hover{color:var(--orange);}
+  .footer-copy{color:rgba(255,255,255,0.2);font-size:.78rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;text-align:center;max-width:1300px;margin:0 auto;}
+  ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <a href="index.html" class="logo">Fit<span>App</span></a>
-            <nav>
-                <ul>
-                    <li><a href="services.html">Servicios</a></li>
-                    <li><a href="pricing.html">Precios</a></li>
-                    <li><a href="about.html">Nosotros</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
-                </ul>
-            </nav>
-            <a href="onboarding.html" class="cta-button">Comenzar Ahora</a>
-        </div>
-    </header>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<nav>
+  <a href="inicio.html" class="logo">FIT<span>APP</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Servicios</a></li>
+    <li><a href="pricing.html">Precios</a></li>
+    <li><a href="about.html">Nosotros</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="contact.html" class="active">Contacto</a></li>
+    <li><a href="onboarding.html" class="nav-pro-btn">Empezar 🔥</a></li>
+  </ul>
+</nav>
 
-    <section class="page-header">
-        <div class="container">
-            <h1>Contacto</h1>
-            <p>¿Tienes preguntas? Estamos aquí para ayudarte en tu journey fitness</p>
-        </div>
-    </section>
+<div class="page-hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="page-hero-content">
+    <span class="hero-badge">💬 Estamos aquí</span>
+    <h1 class="page-hero-title">HÁBLANOS <span>HOY</span></h1>
+    <p class="page-hero-sub">¿Tienes preguntas? Nuestro equipo de expertos está listo para ayudarte en tu journey fitness.</p>
+  </div>
+</div>
 
-    <section class="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Hablemos</h2>
-                    <p>Nuestro equipo está listo para responder tus preguntas sobre nuestros servicios, planes o cualquier duda técnica que puedas tener.</p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-icon">📧</div>
-                            <div>
-                                <h3>Email</h3>
-                                <p>hola@fitsaas.com</p>
-                                <p style="color: var(--gray-dark); font-size: 0.9rem;">Respuesta en 24 horas</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">📱</div>
-                            <div>
-                                <h3>Teléfono</h3>
-                                <p>+34 123 456 789</p>
-                                <p style="color: var(--gray-dark); font-size: 0.9rem;">Lunes a Viernes, 9:00-18:00</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">💬</div>
-                            <div>
-                                <h3>Chat en Vivo</h3>
-                                <p>Disponible en tu dashboard</p>
-                                <p style="color: var(--gray-dark); font-size: 0.9rem;">Para clientes activos</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <h2>Envíanos un mensaje</h2>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nombre completo</label>
-                            <input type="text" id="name" name="name" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Asunto</label>
-                            <select id="subject" name="subject" class="form-control" required>
-                                <option value="">Selecciona un asunto</option>
-                                <option value="general">Consulta general</option>
-                                <option value="technical">Problema técnico</option>
-                                <option value="billing">Facturación y pagos</option>
-                                <option value="feedback">Feedback y sugerencias</option>
-                                <option value="partnership">Colaboraciones</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" name="message" class="form-control" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn-submit">Enviar Mensaje</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="section-wrap">
+  <div class="contact-grid">
+    <div>
+      <span class="section-tag">📞 Formas de contacto</span>
+      <h2 class="section-title" style="margin-bottom:12px;">HABLEMOS <span>DIRECTAMENTE</span></h2>
+      <p style="color:var(--gray-light);font-size:.95rem;line-height:1.8;margin-bottom:36px;">Nuestro equipo está listo para responder tus preguntas sobre servicios, planes o cualquier duda técnica.</p>
 
-    <section class="faq-contact">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: var(--space-md);">Preguntas Frecuentes</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto var(--space-xl); color: var(--gray-dark);">
-                Respuestas rápidas a las consultas más comunes
-            </p>
-            
-            <div class="faq-grid">
-                <div class="faq-item">
-                    <h3 class="faq-question">¿Cómo funciona el proceso de onboarding?</h3>
-                    <p>Completas nuestro cuestionario detallado, nuestro algoritmo crea tu plan personalizado, y comienzas a seguir las rutinas y planes nutricionales desde tu dashboard.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3 class="faq-question">¿Puedo cancelar mi suscripción en cualquier momento?</h3>
-                    <p>Sí, todas nuestras suscripciones son mensuales sin compromiso de permanencia. Puedes cancelar cuando quieras desde tu panel de usuario.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3 class="faq-question">¿Los planes incluyen soporte personalizado?</h3>
-                    <p>Depende del plan. Los planes Pro y Premium incluyen soporte prioritario y consultas con nuestros expertos. El plan Básico incluye soporte por email.</p>
-                </div>
-                
-                <div class="faq-item">
-                    <h3 class="faq-question">¿Qué pasa si tengo una lesión o condición médica?</h3>
-                    <p>Nuestro sistema puede adaptarse a la mayoría de condiciones. Es importante que nos informes durante el onboarding para crear un plan seguro para ti.</p>
-                </div>
-            </div>
+      <div class="contact-method reveal">
+        <div class="method-icon">📧</div>
+        <div class="method-info">
+          <h3>Email</h3>
+          <p>hola@fitapp.com</p>
+          <span>Respuesta en menos de 24 horas</span>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer CORREGIDO con enlaces en gris claro y efecto hover naranja -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>FitApp</h3>
-                    <p>Plataforma FitApp integral de fitness que combina algoritmos de IA con supervisión humana experta para ofrecer programas altamente personalizados.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">📱</a>
-                        <a href="#" class="social-link">📘</a>
-                        <a href="#" class="social-link">📷</a>
-                        <a href="#" class="social-link">🐦</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="services.html">Servicios</a></li>
-                        <li><a href="pricing.html">Precios</a></li>
-                        <li><a href="onboarding.html">Registro</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="privacy.html">Política de Privacidad</a></li>
-                        <li><a href="terms.html">Términos de Servicio</a></li>
-                        <li><a href="cookies.html">Cookies</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
-                        <li><a href="tel:+34123456789">+34 123 456 789</a></li>
-                        <li><a href="contact.html">Formulario de Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 FitApp. Todos los derechos reservados.</p>
-            </div>
+      <div class="contact-method reveal">
+        <div class="method-icon">📱</div>
+        <div class="method-info">
+          <h3>Teléfono</h3>
+          <p>+34 123 456 789</p>
+          <span>Lunes a Viernes, 9:00–18:00</span>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Here you would typically send the form data to your backend
-            alert('¡Mensaje enviado! Te responderemos en breve.');
-            this.reset();
-        });
-    </script>
+      <div class="contact-method reveal">
+        <div class="method-icon">💬</div>
+        <div class="method-info">
+          <h3>Chat en Vivo</h3>
+          <p>Disponible en tu dashboard</p>
+          <span>Para clientes activos</span>
+        </div>
+      </div>
+
+      <div class="contact-method reveal">
+        <div class="method-icon">🤖</div>
+        <div class="method-info">
+          <h3>Coach IA</h3>
+          <p>Disponible 24/7 en FITAPP</p>
+          <span>Respuestas inmediatas sobre fitness</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="form-card">
+        <div class="form-title">Envíanos un <span>mensaje</span></div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" placeholder="Tu nombre" id="f-name">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="tu@email.com" id="f-email">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Asunto</label>
+          <select class="form-control" id="f-subject">
+            <option value="">Selecciona un asunto</option>
+            <option>Consulta general</option>
+            <option>Problema técnico</option>
+            <option>Facturación y pagos</option>
+            <option>Feedback y sugerencias</option>
+            <option>Colaboraciones</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensaje</label>
+          <textarea class="form-control" placeholder="Cuéntanos cómo podemos ayudarte..." id="f-message"></textarea>
+        </div>
+        <button class="btn-submit" onclick="sendContact()">🚀 Enviar Mensaje</button>
+
+        <div class="form-success" id="form-success">
+          <div class="big">✅</div>
+          <h3>¡Mensaje enviado!</h3>
+          <p>Te responderemos en menos de 24 horas. ¡Gracias por contactarnos!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section-alt">
+  <div class="section-wrap">
+    <span class="section-tag">❓ FAQ</span>
+    <h2 class="section-title">PREGUNTAS <span>FRECUENTES</span></h2>
+    <p class="section-desc">Respuestas rápidas a las consultas más comunes de nuestros usuarios.</p>
+
+    <div class="faq-grid">
+      <div class="faq-item reveal">
+        <div class="faq-q">¿Cómo funciona el proceso de onboarding?</div>
+        <p class="faq-a">Completas nuestro cuestionario detallado, nuestro algoritmo crea tu plan personalizado, y comienzas a seguir las rutinas desde tu dashboard en minutos.</p>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">¿Puedo cancelar mi suscripción en cualquier momento?</div>
+        <p class="faq-a">Sí, todas nuestras suscripciones son mensuales sin permanencia. Cancela cuando quieras desde tu panel de usuario.</p>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">¿Los planes incluyen soporte personalizado?</div>
+        <p class="faq-a">Depende del plan. Pro y Premium incluyen soporte prioritario y consultas con expertos. Básico incluye soporte por email.</p>
+      </div>
+      <div class="faq-item reveal">
+        <div class="faq-q">¿Qué pasa si tengo una lesión o condición médica?</div>
+        <p class="faq-a">Nuestro sistema se adapta a la mayoría de condiciones. Es importante que nos informes durante el onboarding para crear un plan seguro.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo">FIT<span>APP</span></div><p class="footer-desc">Plataforma de fitness que combina IA con supervisión humana experta.</p></div>
+    <div class="footer-col"><h4>Navegación</h4><ul><li><a href="inicio.html">Inicio</a></li><li><a href="services.html">Servicios</a></li><li><a href="pricing.html">Precios</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacidad</a></li><li><a href="#">Términos</a></li><li><a href="#">Cookies</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="mailto:hola@fitapp.com">hola@fitapp.com</a></li><li><a href="tel:+34123456789">+34 123 456 789</a></li></ul></div>
+  </div>
+  <p class="footer-copy">© 2025 FITAPP. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);});
+document.querySelectorAll('button,a,.contact-method,.faq-item').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';});el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px';});});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function sendContact() {
+  const name=document.getElementById('f-name').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const msg=document.getElementById('f-message').value.trim();
+  if(!name||!email||!msg){alert('Por favor rellena todos los campos obligatorios.');return;}
+  document.getElementById('form-success').style.display='block';
+  document.querySelector('.btn-submit').style.display='none';
+}
+</script>
 </body>
 </html>
