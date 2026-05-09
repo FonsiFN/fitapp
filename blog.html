@@ -1,769 +1,297 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitApp - Blog </title>
-    <meta name="description" content="Artículos sobre entrenamiento, nutrición, suplementación y ciencia del ejercicio. Aprende a optimizar tus resultados.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --black-primary: #000000;
-            --black-secondary: #0f0f0f;
-            --black-tertiary: #1a1a1a;
-            --orange-primary: #FF6A00;
-            --orange-secondary: #FF944D;
-            --orange-gradient: linear-gradient(135deg, #FF6A00 0%, #FF944D 100%);
-            --white: #ffffff;
-            --gray-light: #f8f9fa;
-            --gray-medium: #e9ecef;
-            --gray-dark: #495057;
-            --gray-darker: #343a40;
-            
-            --font-heading: 'Montserrat', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2.5rem;
-            --space-xl: 4rem;
-            --space-xxl: 6rem;
-            
-            --border-radius-sm: 4px;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-            --border-radius-xl: 20px;
-            
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
-            --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-            --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
-            
-            --transition-fast: 0.2s ease;
-            --transition-normal: 0.3s ease;
-            --transition-slow: 0.5s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: var(--font-body);
-            color: var(--black-primary);
-            line-height: 1.7;
-            background-color: var(--white);
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-        
-        /* Header */
-        header {
-            background-color: var(--white);
-            padding: var(--space-sm) 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-family: var(--font-heading);
-            font-weight: 800;
-            font-size: 1.75rem;
-            color: var(--black-primary);
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: var(--orange-primary);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav li {
-            margin-left: var(--space-lg);
-        }
-        
-        nav a {
-            color: var(--black-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color var(--transition-fast);
-        }
-        
-        nav a:hover {
-            color: var(--orange-primary);
-        }
-        
-        .cta-button {
-            background: var(--orange-gradient);
-            color: var(--white);
-            border: none;
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: var(--border-radius);
-            font-family: var(--font-body);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FITAPP — Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{--black:#0a0a0a;--dark:#111111;--card:#161616;--orange:#FF5500;--orange-bright:#FF7A00;--orange-glow:rgba(255,85,0,0.3);--white:#FFFFFF;--gray:#888888;--gray-light:#cccccc;}
+  *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:none;}
+  .cursor{width:12px;height:12px;background:var(--orange);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;}
+  .cursor-ring{width:36px;height:36px;border:1.5px solid var(--orange);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;opacity:.6;}
+  nav{position:fixed;top:0;width:100%;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:18px 48px;background:rgba(10,10,10,0.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,85,0,0.15);}
+  .logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;color:var(--white);text-decoration:none;}.logo span{color:var(--orange);}
+  .nav-links{display:flex;gap:32px;list-style:none;}.nav-links a{color:var(--gray-light);text-decoration:none;font-size:.85rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;transition:color .2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--orange);}
+  .nav-pro-btn{background:var(--orange);color:var(--white)!important;padding:8px 22px;border-radius:4px;font-weight:700!important;}
+  .page-hero{min-height:50vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding-top:80px;}
+  .hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,85,0,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,85,0,0.07) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
+  @keyframes gridMove{0%{background-position:0 0}100%{background-position:60px 60px}}
+  .hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(255,85,0,0.12) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 4s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.8}50%{transform:translate(-50%,-50%) scale(1.15);opacity:1}}
+  .page-hero-content{position:relative;z-index:2;text-align:center;padding:60px 24px 40px;}
+  .hero-badge{display:inline-block;background:rgba(255,85,0,0.15);border:1px solid rgba(255,85,0,0.4);color:var(--orange);font-size:.75rem;letter-spacing:3px;text-transform:uppercase;padding:6px 20px;border-radius:100px;margin-bottom:24px;animation:fadeUp .8s ease both;}
+  .page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,9vw,7rem);line-height:.95;letter-spacing:5px;animation:fadeUp .8s .15s ease both;}
+  .page-hero-title span{color:var(--orange);}
+  .page-hero-sub{font-size:1rem;font-weight:300;color:var(--gray-light);margin-top:16px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7;animation:fadeUp .8s .3s ease both;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  .section-wrap{max-width:1300px;margin:0 auto;padding:100px 48px;}
 
-        /* Page Header */
-        .page-header {
-            background: var(--black-primary);
-            color: var(--white);
-            padding: var(--space-xl) 0;
-            text-align: center;
-        }
-        
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: var(--space-md);
-            color: var(--white);
-        }
-        
-        .page-header p {
-            font-size: 1.2rem;
-            color: var(--gray-medium);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+  /* BLOG LAYOUT */
+  .blog-layout{display:grid;grid-template-columns:1fr 340px;gap:48px;align-items:start;}
+  @media(max-width:1024px){.blog-layout{grid-template-columns:1fr;}}
 
-        /* Blog Section */
-        .blog {
-            padding: var(--space-xxl) 0;
-        }
-        
-        .blog-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: var(--space-xl);
-        }
-        
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: var(--space-lg);
-        }
-        
-        .post-card {
-            background: var(--white);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: all var(--transition-normal);
-        }
-        
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .post-image {
-            height: 200px;
-            background: var(--gray-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray-dark);
-        }
-        
-        .post-content {
-            padding: var(--space-lg);
-        }
-        
-        .post-meta {
-            display: flex;
-            align-items: center;
-            margin-bottom: var(--space-sm);
-            font-size: 0.9rem;
-            color: var(--gray-dark);
-        }
-        
-        .post-category {
-            background: var(--orange-primary);
-            color: var(--white);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: var(--border-radius-sm);
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-right: var(--space-sm);
-        }
-        
-        .post-title {
-            font-size: 1.3rem;
-            margin-bottom: var(--space-sm);
-        }
-        
-        .post-excerpt {
-            color: var(--gray-darker);
-            margin-bottom: var(--space-md);
-        }
-        
-        .read-more {
-            color: var(--orange-primary);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .read-more:after {
-            content: '→';
-            margin-left: var(--space-xs);
-            transition: transform var(--transition-fast);
-        }
-        
-        .read-more:hover:after {
-            transform: translateX(3px);
-        }
-        
-        /* Sidebar */
-        .sidebar {
-            background: var(--gray-light);
-            padding: var(--space-lg);
-            border-radius: var(--border-radius-lg);
-            height: fit-content;
-        }
-        
-        .sidebar-section {
-            margin-bottom: var(--space-xl);
-        }
-        
-        .sidebar-section:last-child {
-            margin-bottom: 0;
-        }
-        
-        .sidebar-section h3 {
-            margin-bottom: var(--space-md);
-            padding-bottom: var(--space-sm);
-            border-bottom: 2px solid var(--orange-primary);
-        }
-        
-        .categories-list {
-            list-style: none;
-        }
-        
-        .categories-list li {
-            margin-bottom: var(--space-sm);
-        }
-        
-        .categories-list a {
-            color: var(--gray-darker);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .categories-list a:hover {
-            color: var(--orange-primary);
-        }
-        
-        .categories-list .count {
-            background: var(--gray-medium);
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-        }
-        
-        .popular-posts {
-            list-style: none;
-        }
-        
-        .popular-post {
-            display: flex;
-            margin-bottom: var(--space-md);
-            padding-bottom: var(--space-md);
-            border-bottom: 1px solid var(--gray-medium);
-        }
-        
-        .popular-post:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        
-        .popular-post-image {
-            width: 60px;
-            height: 60px;
-            background: var(--gray-medium);
-            border-radius: var(--border-radius);
-            margin-right: var(--space-sm);
-            flex-shrink: 0;
-        }
-        
-        .popular-post-content h4 {
-            font-size: 0.9rem;
-            margin-bottom: var(--space-xs);
-        }
-        
-        .popular-post-date {
-            font-size: 0.8rem;
-            color: var(--gray-dark);
-        }
+  /* FILTER TABS */
+  .filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px;}
+  .filter-tab{background:var(--dark);border:1px solid rgba(255,255,255,0.08);color:var(--gray);padding:8px 20px;border-radius:100px;font-family:'Barlow',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+  .filter-tab.active,.filter-tab:hover{background:var(--orange);border-color:var(--orange);color:var(--white);}
 
-        /* Newsletter */
-        .newsletter-sidebar {
-            background: var(--orange-gradient);
-            color: var(--white);
-            padding: var(--space-lg);
-            border-radius: var(--border-radius);
-            text-align: center;
-        }
-        
-        .newsletter-sidebar h3 {
-            color: var(--white);
-            margin-bottom: var(--space-sm);
-        }
-        
-        .newsletter-sidebar p {
-            color: rgba(255,255,255,0.9);
-            margin-bottom: var(--space-md);
-            font-size: 0.9rem;
-        }
-        
-        .newsletter-form input {
-            width: 100%;
-            padding: var(--space-sm);
-            border: none;
-            border-radius: var(--border-radius);
-            margin-bottom: var(--space-sm);
-            font-family: var(--font-body);
-        }
-        
-        .newsletter-form button {
-            width: 100%;
-            background: var(--white);
-            color: var(--orange-primary);
-            border: none;
-            padding: var(--space-sm);
-            border-radius: var(--border-radius);
-            font-family: var(--font-body);
-            font-weight: 600;
-            cursor: pointer;
-            transition: all var(--transition-normal);
-        }
-        
-        .newsletter-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
+  /* FEATURED POST */
+  .post-featured{background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:16px;overflow:hidden;margin-bottom:24px;display:grid;grid-template-columns:1fr 1fr;transition:all .3s;cursor:pointer;}
+  .post-featured:hover{border-color:rgba(255,85,0,0.3);transform:translateY(-3px);}
+  .post-featured-img{background:linear-gradient(135deg,#1a0500,#0f0f0f);min-height:280px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;}
+  .post-featured-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,85,0,0.1),transparent);}
+  .post-featured-body{padding:36px 32px;display:flex;flex-direction:column;justify-content:center;}
+  @media(max-width:700px){.post-featured{grid-template-columns:1fr;}}
 
-        /* Pagination */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            margin-top: var(--space-xl);
-            gap: var(--space-sm);
-        }
-        
-        .pagination a {
-            padding: var(--space-sm) var(--space-md);
-            border: 1px solid var(--gray-medium);
-            border-radius: var(--border-radius);
-            text-decoration: none;
-            color: var(--black-primary);
-            transition: all var(--transition-fast);
-        }
-        
-        .pagination a:hover {
-            background: var(--orange-primary);
-            color: var(--white);
-            border-color: var(--orange-primary);
-        }
-        
-        .pagination a.active {
-            background: var(--orange-primary);
-            color: var(--white);
-            border-color: var(--orange-primary);
-        }
+  /* POST GRID */
+  .posts-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:700px){.posts-grid{grid-template-columns:1fr;}}
+  .post-card{background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;overflow:hidden;transition:all .25s;cursor:pointer;position:relative;}
+  .post-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--orange);transform:scaleX(0);transform-origin:left;transition:transform .3s;z-index:1;}
+  .post-card:hover::before{transform:scaleX(1);}
+  .post-card:hover{border-color:rgba(255,85,0,0.25);transform:translateY(-4px);}
+  .post-img{height:160px;background:linear-gradient(135deg,#1a0500,#0f0f0f);display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;overflow:hidden;}
+  .post-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,85,0,0.08),transparent);}
+  .post-body{padding:22px 20px;}
+  .post-category{display:inline-block;background:rgba(255,85,0,0.15);border:1px solid rgba(255,85,0,0.3);color:var(--orange);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:10px;font-weight:700;}
+  .post-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:1.5px;margin-bottom:10px;line-height:1.1;}
+  .post-excerpt{color:var(--gray);font-size:.86rem;line-height:1.6;margin-bottom:16px;}
+  .post-meta{display:flex;align-items:center;justify-content:space-between;font-size:.78rem;color:rgba(255,255,255,0.3);}
+  .read-more{color:var(--orange);font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:color .2s;}
+  .read-more:hover{color:var(--orange-bright);}
 
-        /* Footer - IDÉNTICO al del código original */
-        footer {
-            background-color: var(--black-primary);
-            color: var(--white);
-            padding: var(--space-xxl) 0 var(--space-lg);
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-        
-        .footer-section h3 {
-            color: var(--white);
-            margin-bottom: var(--space-md);
-            font-size: 1.2rem;
-        }
-        
-        .footer-section p {
-            color: var(--gray-medium);
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section li {
-            margin-bottom: var(--space-sm);
-        }
-        
-        .footer-section a {
-            color: var(--gray-medium);
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-        
-        .footer-section a:hover {
-            color: var(--orange-primary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: var(--space-md);
-            margin-top: var(--space-md);
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--black-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-decoration: none;
-            transition: all var(--transition-fast);
-        }
-        
-        .social-link:hover {
-            background: var(--orange-primary);
-            transform: translateY(-2px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: var(--space-lg);
-            border-top: 1px solid var(--black-secondary);
-            color: var(--gray-medium);
-            font-size: 0.9rem;
-        }
+  /* PAGINATION */
+  .pagination{display:flex;gap:8px;justify-content:center;margin-top:40px;}
+  .page-btn{width:40px;height:40px;background:var(--dark);border:1px solid rgba(255,255,255,0.1);color:var(--gray-light);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.1rem;cursor:pointer;transition:all .2s;text-decoration:none;}
+  .page-btn:hover,.page-btn.active{background:var(--orange);border-color:var(--orange);color:var(--white);}
 
-        @media (max-width: 1024px) {
-            .blog-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                order: -1;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: var(--space-lg);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .posts-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: var(--space-lg);
-            }
-        }
-    </style>
+  /* SIDEBAR */
+  .sidebar{display:flex;flex-direction:column;gap:20px;position:sticky;top:100px;}
+  .sidebar-card{background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:28px 24px;}
+  .sidebar-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:2px;margin-bottom:20px;}
+  .newsletter-input{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:var(--white);font-family:'Barlow',sans-serif;font-size:.9rem;padding:12px 16px;border-radius:6px;outline:none;margin-bottom:12px;}
+  .newsletter-input::placeholder{color:var(--gray);}
+  .newsletter-input:focus{border-color:rgba(255,85,0,0.4);}
+  .newsletter-btn{width:100%;background:var(--orange);color:var(--white);border:none;padding:12px;font-family:'Barlow',sans-serif;font-weight:700;font-size:.88rem;letter-spacing:2px;text-transform:uppercase;border-radius:6px;cursor:pointer;transition:background .2s;}
+  .newsletter-btn:hover{background:var(--orange-bright);}
+  .category-list{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .category-list li a{display:flex;justify-content:space-between;align-items:center;color:var(--gray-light);text-decoration:none;font-size:.88rem;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);transition:color .2s;}
+  .category-list li a:hover{color:var(--orange);}
+  .cat-count{background:rgba(255,85,0,0.15);color:var(--orange);font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:100px;}
+  .popular-post{display:flex;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.06);margin-bottom:14px;cursor:pointer;}
+  .popular-post:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  .popular-icon{width:48px;height:48px;background:rgba(255,85,0,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+  .popular-post h4{font-size:.84rem;font-weight:600;line-height:1.4;margin-bottom:4px;}
+  .popular-date{font-size:.75rem;color:var(--gray);}
+
+  /* CTA */
+  .cta-section{background:linear-gradient(135deg,var(--dark),var(--black));border-top:1px solid rgba(255,85,0,0.15);border-bottom:1px solid rgba(255,85,0,0.15);text-align:center;padding:100px 48px;}
+  .btn-primary{background:var(--orange);color:var(--white);border:none;padding:16px 40px;font-family:'Barlow',sans-serif;font-size:1rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:all .25s;text-decoration:none;display:inline-block;}
+  .btn-primary:hover{background:var(--orange-bright);transform:translateY(-2px);box-shadow:0 12px 40px var(--orange-glow);}
+  .btn-secondary{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.25);padding:16px 40px;font-family:'Barlow',sans-serif;font-size:1rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:all .25s;text-decoration:none;display:inline-block;}
+  .btn-secondary:hover{border-color:var(--orange);color:var(--orange);}
+  footer{background:var(--dark);border-top:1px solid rgba(255,255,255,0.07);padding:60px 48px 32px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;max-width:1300px;margin:0 auto 40px;}
+  @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}nav{padding:16px 20px;}.nav-links{display:none;}.section-wrap{padding:80px 20px;}.cta-section{padding:80px 20px;}footer{padding:60px 20px 32px;}}
+  .footer-logo{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:4px;color:var(--white);margin-bottom:12px;}.footer-logo span{color:var(--orange);}
+  .footer-desc{color:var(--gray);font-size:.88rem;line-height:1.7;}
+  .footer-col h4{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:2px;margin-bottom:16px;}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-col ul a{color:var(--gray);text-decoration:none;font-size:.85rem;transition:color .2s;}
+  .footer-col ul a:hover{color:var(--orange);}
+  .footer-copy{color:rgba(255,255,255,0.2);font-size:.78rem;border-top:1px solid rgba(255,255,255,0.06);padding-top:24px;text-align:center;max-width:1300px;margin:0 auto;}
+  ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:var(--black);}::-webkit-scrollbar-thumb{background:var(--orange);border-radius:2px;}
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
 </head>
 <body>
-    <header>
-        <div class="container header-content">
-            <a href="index.html" class="logo">Fit<span>App</span></a>
-            <nav>
-                <ul>
-                    <li><a href="services.html">Servicios</a></li>
-                    <li><a href="pricing.html">Precios</a></li>
-                    <li><a href="about.html">Nosotros</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
-                </ul>
-            </nav>
-            <a href="onboarding.html" class="cta-button">Comenzar Ahora</a>
-        </div>
-    </header>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<nav>
+  <a href="inicio.html" class="logo">FIT<span>APP</span></a>
+  <ul class="nav-links">
+    <li><a href="services.html">Servicios</a></li>
+    <li><a href="pricing.html">Precios</a></li>
+    <li><a href="about.html">Nosotros</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="contact.html">Contacto</a></li>
+    <li><a href="onboarding.html" class="nav-pro-btn">Empezar 🔥</a></li>
+  </ul>
+</nav>
 
-    <section class="page-header">
-        <div class="container">
-            <h1>Blog de FitApp</h1>
-            <p>Artículos sobre fitness, nutrición y ciencia del ejercicio para optimizar tus resultados</p>
-        </div>
-    </section>
+<div class="page-hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="page-hero-content">
+    <span class="hero-badge">📖 Ciencia del fitness</span>
+    <h1 class="page-hero-title">BLOG DE <span>FITAPP</span></h1>
+    <p class="page-hero-sub">Artículos sobre entrenamiento, nutrición y ciencia del ejercicio para optimizar tus resultados.</p>
+  </div>
+</div>
 
-    <section class="blog">
-        <div class="container">
-            <div class="blog-grid">
-                <div class="posts-container">
-                    <div class="posts-grid">
-                        <!-- Post 1 -->
-                        <article class="post-card">
-                            <div class="post-image">
-                                Imagen del Post
-                            </div>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <span class="post-category">Entrenamiento</span>
-                                    <span>15 Marzo, 2023</span>
-                                </div>
-                                <h2 class="post-title">Principios Científicos para Maximizar la Hipertrofia</h2>
-                                <p class="post-excerpt">Descubre los mecanismos fisiológicos detrás del crecimiento muscular y cómo aplicarlos en tu rutina de entrenamiento.</p>
-                                <a href="blog/post-1.html" class="read-more">Leer más</a>
-                            </div>
-                        </article>
-                        
-                        <!-- Post 2 -->
-                        <article class="post-card">
-                            <div class="post-image">
-                                Imagen del Post
-                            </div>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <span class="post-category">Nutrición</span>
-                                    <span>10 Marzo, 2023</span>
-                                </div>
-                                <h2 class="post-title">Timing de Nutrientes: ¿Mito o Realidad Científica?</h2>
-                                <p class="post-excerpt">Analizamos la evidencia científica sobre el momento óptimo para consumir proteínas y carbohidratos alrededor del entrenamiento.</p>
-                                <a href="blog/post-2.html" class="read-more">Leer más</a>
-                            </div>
-                        </article>
-                        
-                        <!-- Post 3 -->
-                        <article class="post-card">
-                            <div class="post-image">
-                                Imagen del Post
-                            </div>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <span class="post-category">Suplementación</span>
-                                    <span>5 Marzo, 2023</span>
-                                </div>
-                                <h2 class="post-title">Los 5 Suplementos con Evidencia Científica Sólida</h2>
-                                <p class="post-excerpt">Revisión de los suplementos que realmente funcionan según estudios científicos rigurosos, y cómo incorporarlos correctamente.</p>
-                                <a href="blog/post-3.html" class="read-more">Leer más</a>
-                            </div>
-                        </article>
-                        
-                        <!-- Post 4 -->
-                        <article class="post-card">
-                            <div class="post-image">
-                                Imagen del Post
-                            </div>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <span class="post-category">Recuperación</span>
-                                    <span>28 Febrero, 2023</span>
-                                </div>
-                                <h2 class="post-title">Sueño y Rendimiento Deportivo: La Conexión Crítica</h2>
-                                <p class="post-excerpt">Cómo la calidad y cantidad de sueño afectan tu recuperación, crecimiento muscular y rendimiento en el entrenamiento.</p>
-                                <a href="blog/post-4.html" class="read-more">Leer más</a>
-                            </div>
-                        </article>
-                        
-                        <!-- Post 5 -->
-                        <article class="post-card">
-                            <div class="post-image">
-                                Imagen del Post
-                            </div>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <span class="post-category">Metodología</span>
-                                    <span>20 Febrero, 2023</span>
-                                </div>
-                                <h2 class="post-title">Periodización: Por Qué Tu Rutina Debe Evolucionar</h2>
-                                <p class="post-excerpt">Entiende los principios de la periodización del entrenamiento y cómo aplicarlos para evitar estancamientos y lesiones.</p>
-                                <a href="blog/post-5.html" class="read-more">Leer más</a>
-                            </div>
-                        </article>
-                        
-                        <!-- Post 6 -->
-                        <article class="post-card">
-                            <div class="post-image">
-                                Imagen del Post
-                            </div>
-                            <div class="post-content">
-                                <div class="post-meta">
-                                    <span class="post-category">Nutrición</span>
-                                    <span>15 Febrero, 2023</span>
-                                </div>
-                                <h2 class="post-title">Dietas Flexibles vs. Estructuradas: ¿Cuál Elegir?</h2>
-                                <p class="post-excerpt">Comparativa de diferentes enfoques nutricionales y cómo determinar cuál se adapta mejor a tu estilo de vida y objetivos.</p>
-                                <a href="blog/post-6.html" class="read-more">Leer más</a>
-                            </div>
-                        </article>
-                    </div>
-                    
-                    <div class="pagination">
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">→</a>
-                    </div>
-                </div>
-                
-                <div class="sidebar">
-                    <!-- Newsletter -->
-                    <div class="newsletter-sidebar">
-                        <h3>Newsletter Fitness</h3>
-                        <p>Recibe artículos exclusivos y tips científicos directamente en tu email</p>
-                        <form class="newsletter-form">
-                            <input type="email" placeholder="Tu email" required>
-                            <button type="submit">Suscribirme</button>
-                        </form>
-                    </div>
-                    
-                    <!-- Categories -->
-                    <div class="sidebar-section">
-                        <h3>Categorías</h3>
-                        <ul class="categories-list">
-                            <li>
-                                <a href="#">Entrenamiento <span class="count">12</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Nutrición <span class="count">8</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Suplementación <span class="count">5</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Recuperación <span class="count">4</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Metodología <span class="count">7</span></a>
-                            </li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Popular Posts -->
-                    <div class="sidebar-section">
-                        <h3>Artículos Populares</h3>
-                        <ul class="popular-posts">
-                            <li class="popular-post">
-                                <div class="popular-post-image"></div>
-                                <div class="popular-post-content">
-                                    <h4>Principios Científicos para Maximizar la Hipertrofia</h4>
-                                    <div class="popular-post-date">15 Mar, 2023</div>
-                                </div>
-                            </li>
-                            <li class="popular-post">
-                                <div class="popular-post-image"></div>
-                                <div class="popular-post-content">
-                                    <h4>Los 5 Suplementos con Evidencia Científica Sólida</h4>
-                                    <div class="popular-post-date">5 Mar, 2023</div>
-                                </div>
-                            </li>
-                            <li class="popular-post">
-                                <div class="popular-post-image"></div>
-                                <div class="popular-post-content">
-                                    <h4>Sueño y Rendimiento Deportivo: La Conexión Crítica</h4>
-                                    <div class="popular-post-date">28 Feb, 2023</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="section-wrap">
+  <div class="filter-tabs">
+    <button class="filter-tab active">Todos</button>
+    <button class="filter-tab">Entrenamiento</button>
+    <button class="filter-tab">Nutrición</button>
+    <button class="filter-tab">Suplementación</button>
+    <button class="filter-tab">Recuperación</button>
+    <button class="filter-tab">Metodología</button>
+  </div>
 
-    <!-- Footer IDÉNTICO al del código original -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>FitSaaS</h3>
-                    <p>Plataforma FitApp integral de fitness que combina algoritmos de IA con supervisión humana experta para ofrecer programas altamente personalizados.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link">📱</a>
-                        <a href="#" class="social-link">📘</a>
-                        <a href="#" class="social-link">📷</a>
-                        <a href="#" class="social-link">🐦</a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="services.html">Servicios</a></li>
-                        <li><a href="pricing.html">Precios</a></li>
-                        <li><a href="onboarding.html">Registro</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="privacy.html">Política de Privacidad</a></li>
-                        <li><a href="terms.html">Términos de Servicio</a></li>
-                        <li><a href="cookies.html">Cookies</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contacto</h3>
-                    <ul>
-                        <li><a href="mailto:hola@fitsaas.com">hola@fitsaas.com</a></li>
-                        <li><a href="tel:+34123456789">+34 123 456 789</a></li>
-                        <li><a href="contact.html">Formulario de Contacto</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2023 FitApp. Todos los derechos reservados.</p>
-            </div>
+  <div class="blog-layout">
+    <div>
+      <!-- FEATURED -->
+      <div class="post-featured reveal">
+        <div class="post-featured-img">🏋️</div>
+        <div class="post-featured-body">
+          <span class="post-category">Entrenamiento</span>
+          <h2 class="post-title" style="font-size:1.8rem;margin-bottom:14px;">Principios científicos para maximizar la hipertrofia muscular</h2>
+          <p class="post-excerpt">Descubre los mecanismos fisiológicos detrás del crecimiento muscular y cómo aplicarlos en tu rutina de entrenamiento para resultados óptimos.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:20px;">
+            <span style="color:var(--gray);font-size:.8rem;">15 Marzo, 2023</span>
+            <a href="#" class="read-more">Leer artículo →</a>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <script>
-        // Newsletter form submission
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            // Here you would typically send to your email service
-            alert('¡Gracias por suscribirte! Te hemos enviado un email de confirmación.');
-            this.reset();
-        });
-    </script>
+      <!-- POSTS GRID -->
+      <div class="posts-grid">
+        <div class="post-card reveal">
+          <div class="post-img">🥗</div>
+          <div class="post-body">
+            <span class="post-category">Nutrición</span>
+            <div class="post-title">Timing de nutrientes: ¿mito o realidad científica?</div>
+            <p class="post-excerpt">Analizamos la evidencia sobre el momento óptimo para consumir proteínas y carbohidratos alrededor del entrenamiento.</p>
+            <div class="post-meta"><span>10 Mar, 2023</span><a href="#" class="read-more">Leer →</a></div>
+          </div>
+        </div>
+        <div class="post-card reveal">
+          <div class="post-img">💊</div>
+          <div class="post-body">
+            <span class="post-category">Suplementación</span>
+            <div class="post-title">Los 5 suplementos con evidencia científica sólida</div>
+            <p class="post-excerpt">Revisión de los suplementos que realmente funcionan según estudios científicos rigurosos.</p>
+            <div class="post-meta"><span>5 Mar, 2023</span><a href="#" class="read-more">Leer →</a></div>
+          </div>
+        </div>
+        <div class="post-card reveal">
+          <div class="post-img">😴</div>
+          <div class="post-body">
+            <span class="post-category">Recuperación</span>
+            <div class="post-title">Sueño y rendimiento deportivo: la conexión crítica</div>
+            <p class="post-excerpt">Cómo la calidad y cantidad de sueño afectan tu recuperación, crecimiento muscular y rendimiento.</p>
+            <div class="post-meta"><span>28 Feb, 2023</span><a href="#" class="read-more">Leer →</a></div>
+          </div>
+        </div>
+        <div class="post-card reveal">
+          <div class="post-img">📊</div>
+          <div class="post-body">
+            <span class="post-category">Metodología</span>
+            <div class="post-title">Periodización: por qué tu rutina debe evolucionar</div>
+            <p class="post-excerpt">Entiende los principios de la periodización y cómo aplicarlos para evitar estancamientos y lesiones.</p>
+            <div class="post-meta"><span>20 Feb, 2023</span><a href="#" class="read-more">Leer →</a></div>
+          </div>
+        </div>
+        <div class="post-card reveal">
+          <div class="post-img">🍫</div>
+          <div class="post-body">
+            <span class="post-category">Nutrición</span>
+            <div class="post-title">Dietas flexibles vs. estructuradas: ¿cuál elegir?</div>
+            <p class="post-excerpt">Comparativa de enfoques nutricionales y cómo determinar cuál se adapta mejor a tu vida.</p>
+            <div class="post-meta"><span>15 Feb, 2023</span><a href="#" class="read-more">Leer →</a></div>
+          </div>
+        </div>
+        <div class="post-card reveal">
+          <div class="post-img">⚡</div>
+          <div class="post-body">
+            <span class="post-category">Entrenamiento</span>
+            <div class="post-title">HIIT vs LISS: cuándo usar cada tipo de cardio</div>
+            <p class="post-excerpt">Descubre las diferencias entre cardio de alta intensidad y de baja intensidad, y cuándo aplicar cada uno.</p>
+            <div class="post-meta"><span>8 Feb, 2023</span><a href="#" class="read-more">Leer →</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination" style="margin-top:40px;">
+        <a href="#" class="page-btn active">1</a>
+        <a href="#" class="page-btn">2</a>
+        <a href="#" class="page-btn">3</a>
+        <a href="#" class="page-btn">→</a>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">📧 Newsletter <span style="color:var(--orange)">Fitness</span></div>
+        <p style="color:var(--gray);font-size:.86rem;line-height:1.6;margin-bottom:20px;">Recibe artículos exclusivos y tips científicos directamente en tu email.</p>
+        <input type="email" class="newsletter-input" placeholder="tu@email.com">
+        <button class="newsletter-btn">Suscribirme</button>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Categorías</div>
+        <ul class="category-list">
+          <li><a href="#">Entrenamiento <span class="cat-count">12</span></a></li>
+          <li><a href="#">Nutrición <span class="cat-count">8</span></a></li>
+          <li><a href="#">Suplementación <span class="cat-count">5</span></a></li>
+          <li><a href="#">Recuperación <span class="cat-count">4</span></a></li>
+          <li><a href="#">Metodología <span class="cat-count">7</span></a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">Artículos <span style="color:var(--orange)">Populares</span></div>
+        <div class="popular-post">
+          <div class="popular-icon">🏋️</div>
+          <div><h4>Principios Científicos para Maximizar la Hipertrofia</h4><div class="popular-date">15 Mar, 2023</div></div>
+        </div>
+        <div class="popular-post">
+          <div class="popular-icon">💊</div>
+          <div><h4>Los 5 Suplementos con Evidencia Científica</h4><div class="popular-date">5 Mar, 2023</div></div>
+        </div>
+        <div class="popular-post">
+          <div class="popular-icon">😴</div>
+          <div><h4>Sueño y Rendimiento Deportivo</h4><div class="popular-date">28 Feb, 2023</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <span style="font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:16px;">🚀 Pasa a la acción</span>
+  <h2 style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,6vw,5rem);letter-spacing:4px;margin-bottom:16px;">APLICA LO QUE <span style="color:var(--orange)">APRENDES</span></h2>
+  <p style="color:var(--gray-light);max-width:480px;margin:0 auto 40px;line-height:1.7;">Deja de solo leer sobre fitness y empieza a transformar tu cuerpo con un plan personalizado.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="onboarding.html" class="btn-primary">🔥 Comenzar Gratis</a>
+    <a href="pricing.html" class="btn-secondary">Ver Planes</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo">FIT<span>APP</span></div><p class="footer-desc">Plataforma de fitness que combina IA con supervisión humana experta.</p></div>
+    <div class="footer-col"><h4>Navegación</h4><ul><li><a href="inicio.html">Inicio</a></li><li><a href="services.html">Servicios</a></li><li><a href="pricing.html">Precios</a></li><li><a href="blog.html">Blog</a></li></ul></div>
+    <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacidad</a></li><li><a href="#">Términos</a></li><li><a href="#">Cookies</a></li></ul></div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li><a href="mailto:hola@fitapp.com">hola@fitapp.com</a></li><li><a href="contact.html">Formulario</a></li></ul></div>
+  </div>
+  <p class="footer-copy">© 2025 FITAPP. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px';setTimeout(()=>{ring.style.left=e.clientX+'px';ring.style.top=e.clientY+'px';},60);});
+document.querySelectorAll('button,a,.post-card,.post-featured,.popular-post').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';});el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px';});});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('.filter-tab').forEach(btn=>{btn.addEventListener('click',function(){document.querySelectorAll('.filter-tab').forEach(b=>b.classList.remove('active'));this.classList.add('active');});});
+</script>
 </body>
 </html>
